@@ -6,7 +6,6 @@ class FibVec {
         size_t mCount=0;
         size_t mCapacity=1;
         int* data=new int [1];
-        void update(size_t cap);
     public:
         FibVec();
         ~FibVec();

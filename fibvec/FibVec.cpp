@@ -32,14 +32,6 @@ size_t lastFeb(size_t feb){
   return f(n-1);
 }
 
-void FibVec::update(size_t cap){
-  int* temp= new int[cap];
-  for (size_t i=0; i<mCount;i++){
-    *(temp+i)= *(data+i);
-  }
-  delete [] data;
-  data=temp;
-};
 FibVec::FibVec(){
     mCount=0;
     mCapacity=1;
@@ -86,6 +78,7 @@ void FibVec::insert(int value, size_t index){
  }
 };
 int FibVec::lookup(size_t index) const{
+
   int i =*(data+index);
   return i;
 };
