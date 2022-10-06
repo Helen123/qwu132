@@ -17,7 +17,7 @@ class FibVec {
         int pop();
         void push(int lastValue);
         int remove(size_t index);
-        FibVec slice(size_t index, size_t counts);
+        FibVec slice(size_t index, size_t count) const;
 
 
 };

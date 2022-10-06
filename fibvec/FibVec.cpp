@@ -102,7 +102,7 @@ int FibVec::pop(){
 void FibVec::push(int lastValue){
     insert(lastValue, mCount);
 }
-FibVec FibVec::slice(size_t index, size_t count){
+FibVec FibVec::slice(size_t index, size_t count) const{
   FibVec small;
   for(size_t i=0; i<count;i++){
     small.push(*(data+index+i));
