@@ -3,6 +3,7 @@
 #include <iostream>
 
 using namespace std;
+
 size_t f(size_t n){
   if(n==1){
     return 1;
