@@ -18,6 +18,9 @@ size_t f(size_t n){
 };
 size_t nextFeb(size_t feb){
   size_t n =1;
+  if(feb==1){
+    return 2;
+  }
   while (feb!=f(n)){
     n++;
   }
@@ -27,6 +30,9 @@ size_t nextFeb(size_t feb){
 
 size_t lastFeb(size_t feb){
   size_t n =1;
+  if(feb==1){
+    return 1;
+  }
   while (feb!=f(n)){
     n++;
   }
@@ -109,7 +115,7 @@ int FibVec::remove(size_t index){
    }
   else{
     int re= *(data+index);
-    if(mCount-1<lastFeb(mCapacity)){
+    if((mCount-1)==lastFeb(mCapacity)){
         mCapacity=lastFeb(mCapacity);
         mCount--;
         int* temp= new int[mCapacity];

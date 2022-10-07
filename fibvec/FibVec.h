@@ -6,9 +6,6 @@ class FibVec {
         size_t mCount=0;
         size_t mCapacity=1;
         int* data=new int [1];
-        size_t f(size_t n);
-        size_t nextFeb(size_t feb);
-        size_t lastFeb(size_t feb);
     public:
         FibVec();
         ~FibVec();
