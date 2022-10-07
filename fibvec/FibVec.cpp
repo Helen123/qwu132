@@ -117,7 +117,7 @@ int FibVec::remove(size_t index){
    }
   else{
     int re= *(data+index);
-    if((mCount-2)==lastFeb(lastFeb(mCapacity))){
+    if((mCount)==lastFeb(lastFeb(mCapacity))){
         mCapacity=lastFeb(mCapacity);
         mCount--;
         int* temp= new int[mCapacity];
