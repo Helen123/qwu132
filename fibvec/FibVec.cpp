@@ -112,7 +112,7 @@ FibVec FibVec::slice(size_t index, size_t count) const{
 
 }
 int FibVec::remove(size_t index){
-  if(index>(mCount-1)){
+  if(index>(mCount-1)||index<0){
     throw std::out_of_range("out of range");
    }
   else{
