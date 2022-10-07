@@ -42,7 +42,6 @@ size_t lastFeb(size_t feb){
 FibVec::FibVec(){
     mCount=0;
     mCapacity=1;
-    data=new int [1];
 };
 
 FibVec::~FibVec(){
