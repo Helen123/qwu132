@@ -1,5 +1,8 @@
 # include <cstddef>
 
+size_t f(size_t n);
+size_t nextFeb(size_t feb);
+size_t lastFeb(size_t feb);
 
 class FibVec {
     private:
