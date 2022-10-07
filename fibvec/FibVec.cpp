@@ -42,6 +42,7 @@ size_t lastFeb(size_t feb){
 FibVec::FibVec(){
     mCount=0;
     mCapacity=1;
+    data=new int [1];
 };
 
 FibVec::~FibVec(){
@@ -57,7 +58,7 @@ size_t FibVec::count() const{
 };
 
 void FibVec::insert(int value, size_t index){
- if (index>(mCount-1)){
+ if (index>mCount){
     throw std::out_of_range("out of range");
  }
  else{
@@ -77,7 +78,7 @@ void FibVec::insert(int value, size_t index){
       }
     else{
       mCount++;
-      for(size_t i = mCount; i>index;i--){
+      for(size_t i = (mCount-1); i>index;i--){
           *(data+i)= *(data+i-1);
         }
       *(data+index)= value;
