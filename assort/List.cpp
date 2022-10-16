@@ -84,7 +84,7 @@ const std::string& List::lookup(size_t index) const{
   }
   string out =head->data;
   Node* curr=head;
-  for(int i= 0; i<index;i++){
+  for(size_t i= 0; i<index;i++){
     if(curr->next==NULL){
       throw std::out_of_range("out of range");
     }
@@ -145,7 +145,7 @@ while(n!=index){
 curr=curr->next;
 n++;
 }
-string out = curr->data;
+string ot = curr->data;
 if(curr->next!=NULL){
   curr=curr->next;
   }
@@ -153,7 +153,7 @@ else{
  curr=NULL; 
 }
 delete curr;
-return out;
+return ot;
 }
 size_t List::remove(const std::string& value){
 Node* curr= head;
@@ -164,5 +164,5 @@ while(curr!=NULL){
   }
  curr=curr->next;
 }
-
+return num;
 }
