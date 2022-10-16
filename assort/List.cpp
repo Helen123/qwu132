@@ -77,12 +77,12 @@ return n;
 
     }
   }  
-    
+    string ot="";
 const std::string& List::lookup(size_t index) const{
   if(head==NULL){
     throw std::out_of_range("out of range");
   }
-  string ot =head->data;
+  ot =head->data;
   Node* curr=head;
   for(size_t i= 0; i<index;i++){
     if(curr->next==NULL){
