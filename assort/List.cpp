@@ -97,7 +97,7 @@ void List::print(bool reverse) const{
   if(head==NULL){
     cout<<"[]"<<endl;
   }
-  if(reverse==1){
+  if(reverse==0){
     cout<<"[";
     Node* curr=head;
     Node* nextnode=head->next;
