@@ -146,13 +146,15 @@ curr=curr->next;
 n++;
 }
 string ot = curr->data;
-if(curr->next!=NULL){
-  curr=curr->next;
+Node* temp=curr;
+delete curr;
+if(temp->next!=NULL){
+  temp=temp->next;
   }
 else{
- curr=NULL; 
+ temp=NULL; 
 }
-delete curr;
+
 return ot;
 }
 size_t List::remove(const std::string& value){
