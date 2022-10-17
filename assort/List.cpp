@@ -66,9 +66,9 @@ return n;
       }
       else{
         while(true){
-          if(value<curr->next->data||curr->next==NULL){
+          if(curr->next==NULL||value<curr->next->data){
             insertnode->next=curr->next;
-            curr=insertnode;
+            curr->next=insertnode;
             break;
           }
           curr=curr->next;
