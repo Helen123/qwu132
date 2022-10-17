@@ -144,6 +144,7 @@ size_t n=0;
 while(n!=index){
   if(curr==NULL){
     throw std::out_of_range("out of range");
+    break;
   }
 curr=curr->next;
 n++;
