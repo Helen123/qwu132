@@ -136,6 +136,9 @@ void List::print(bool reverse) const{
   }
 }
 std::string List::remove(size_t index){
+if(head==NULL){
+  throw std::out_of_range("out of range");
+}
 Node* curr=head;
 size_t n=0;
 while(n!=index){
@@ -147,22 +150,24 @@ n++;
 }
 string ot = curr->data;
 Node* temp=curr;
-delete curr;
-if(temp->next!=NULL){
-  temp=temp->next;
+if(curr->next!=NULL){
+  curr=curr->next;
   }
 else{
- temp=NULL; 
+ curr=NULL; 
 }
-
+delete temp;
 return ot;
 }
 size_t List::remove(const std::string& value){
 Node* curr= head;
 int num=0;
 while(curr!=NULL){
+  Node* temp= curr;
   if(curr->data==value){
     num++;
+    
+    delete temp;
   }
  curr=curr->next;
 }
