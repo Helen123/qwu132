@@ -97,7 +97,7 @@ void List::print(bool reverse) const{
   if(head==NULL){
     cout<<"[]"<<endl;
   }
-  if(reverse==0){
+  else{if(reverse==0){
     cout<<"[";
     Node* curr=head;
     Node* nextnode=head->next;
@@ -133,7 +133,7 @@ void List::print(bool reverse) const{
     cout<<out<<endl;
     
   }
-
+  }
 }
 std::string List::remove(size_t index){
 Node* curr=head;
