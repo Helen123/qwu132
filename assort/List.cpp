@@ -141,20 +141,20 @@ if(head==NULL){
 }
 Node* curr=head;
 size_t n=0;
-while(n!=index){
-  if(curr==NULL){
+while(n!=index-1){
+  if(curr->next==NULL){
     throw std::out_of_range("out of range");
   }
 curr=curr->next;
 n++;
 }
-string ot = curr->data;
-Node* temp=curr;
-if(curr->next!=NULL){
-  curr=curr->next;
+string ot = curr->next->data;
+Node* temp=curr->next;
+if(temp->next!=NULL){
+  curr->next=temp->next;
   }
 else{
- curr=NULL; 
+ curr->next=NULL; 
 }
 temp->next=NULL;
 delete temp;
@@ -163,16 +163,16 @@ return ot;
 size_t List::remove(const std::string& value){
 Node* curr= head;
 int num=0;
-while(curr!=NULL){
+while(curr->next!=NULL){
   
-  if(curr->data==value){
+  if(curr->next->data==value){
     num++;
-    Node* temp= curr;
-    if(curr->next!=NULL){
-      curr=curr->next;
+    Node* temp= curr->next;
+    if(temp->next!=NULL){
+      curr->next=temp->next;
       }   
     else{
-      curr=NULL;  
+      curr->next=NULL;  
       }
     temp->next=NULL;
     delete temp;
