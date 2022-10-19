@@ -136,48 +136,59 @@ void List::print(bool reverse) const{
   }
 }
 std::string List::remove(size_t index){
-if(head==NULL){
-  throw std::out_of_range("out of range");
-}
-Node* curr=head;
-size_t n=0;
-while(n!=index-1){
-  if(curr->next==NULL){
-    throw std::out_of_range("out of range");
-  }
-curr=curr->next;
-n++;
-}
-string ot = curr->next->data;
-Node* temp=curr->next;
-if(temp->next!=NULL){
-  curr->next=temp->next;
-  }
-else{
- curr->next=NULL; 
-}
-temp->next=NULL;
-delete temp;
-return ot;
+string out ="";
+size_t n = count();
+    if (index >= n){
+        throw out_of_range("Out of Range");
+    }
+    Node* curr = head;
+    if (n == 1){
+        Node* temp = head;
+        out= temp -> data;
+        delete head;
+        head = NULL;
+    }
+    else if (index == 0){
+        out= curr -> data;
+        head = curr -> next;
+        delete curr;
+        curr = NULL;
+    }
+    else if (index == n - 1){
+        for (size_t i = 0; i < n - 2; i++){
+            curr = curr -> next;
+        }
+        Node* temp = curr -> next;
+        out= temp -> data;
+        delete curr -> next;
+        curr -> next = NULL;
+    }
+    else{
+        for (size_t j = 0; j < index - 1; j++){
+            curr = curr -> next;
+        }
+        Node* temp = curr -> next;
+        out= temp -> data;
+        curr -> next = temp -> next;
+        delete temp;
+        temp = NULL;
+    }
+    return out;
 }
 size_t List::remove(const std::string& value){
-Node* curr= head;
-int num=0;
-while(curr->next!=NULL){
-  
-  if(curr->next->data==value){
-    num++;
-    Node* temp= curr->next;
-    if(temp->next!=NULL){
-      curr->next=temp->next;
-      }   
-    else{
-      curr->next=NULL;  
-      }
-    temp->next=NULL;
-    delete temp;
-  }
- else{curr=curr->next;}
-}
-return num;
+    size_t n = 0;
+    Node* curr = head;
+    while (curr != NULL){
+      size_t num = count();
+      curr = head;
+        for (size_t i = 0; i < num; i++){
+            if (curr -> data == value){
+                remove(i);
+                n ++;
+                break;
+            }
+            curr = curr -> next;
+        }
+    }
+    return n;
 }
