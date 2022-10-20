@@ -1,5 +1,7 @@
 #include "Node.h"
 #include <stdexcept>
+#include <string>
+using namespace std;
 
     Node::Node(const Node& other){
         if(other.left==nullptr&&other.right==nullptr){
@@ -23,6 +25,18 @@
             this->count=left->count+right->count+1;
         }
     }
+    Node::Node(Node&& other){
+    
+       
+    data=other.data;
+    count=other.count;
+    left=other.left;
+    other.left=nullptr;
+    right=other.right;
+    other.right=nullptr;
+      
+    }
+
     Node::~Node(){
        if(left!=nullptr&&right!=nullptr){
               delete left;
@@ -113,6 +127,87 @@
         }
 
     }
+    std::string& Node::nodeprint(){
+        std::string out=data;
+        if(left==nullptr&&right==nullptr){
+            return out;
+        }
+        else{
+            if(left==nullptr){
+                out.insert(0,"-");
+            }
+            else{
+                out.insert(0,left->nodeprint());
+            }
+            if(right==nullptr){
+             out.insert(out.length(),"-");
+            }
+            else{
+                 out.insert(out.length(),right->nodeprint());
+            }
+        }
+        out.insert(0,"(");
+        out.insert(out.length(),")");
+        return out;
+
+
+
+    }
+    size_t Node::noderemove(const std::string& value){
+        if(data==value){
+            if(left==nullptr&&right==nullptr){
+                delete this;
+            }
+            else if(left==nullptr){
+                data=right->data;
+                count=right->count;
+                Node* temp=right;
+                left=right->left;
+                right=right->right;
+                delete temp;
+            }
+            else if(right==nullptr){
+             
+                data=left->data;
+                count=left->count;
+                Node* temp=left;
+                left=left->left;
+                right=left->right;
+                delete temp;
+            }
+            else{
+                data=left->data;
+                Node* prev=left;
+                Node* curr=left->right;
+                while(curr!=nullptr){
+                    data=curr->data;
+                    prev=prev->right;
+                    curr=curr->right;
+                }
+                delete curr;
+                prev->right=nullptr;
+
+            }
+
+        }
+        else if(value>data){
+            if(right==nullptr){
+                return 0;
+            }
+            else{
+                return right->noderemove(value);
+            }
+        }    
+        else{
+            if(left==nullptr){
+                return 0;
+            }
+            else{
+                return left->noderemove(value);
+            }
+        }
+    }
+
 
     //Node* // Node pointer
     //*ptr  // derefernce ptr

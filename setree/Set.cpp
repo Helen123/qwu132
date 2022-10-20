@@ -2,6 +2,7 @@
 #include <stdexcept>
 #include <iostream>
 #include <string>
+using namespace std;
 
 Set::Set(){
     mRoot=nullptr;
@@ -76,8 +77,19 @@ const std::string& Set::lookup(size_t n) const{
   
 }
 void Set::print() const{
- 
+  if(mRoot==nullptr){
+    cout<<"-"<<endl;
+  }
+  else {
+    std::string out=mRoot->nodeprint();
+    cout<<out<<endl;
+  }
 } 
 size_t Set::remove(const std::string& value){
-  return 1;
+  if(mRoot==nullptr){
+    return 0;
+  }
+  else{
+    return mRoot->noderemove(value);
+  }
 }
