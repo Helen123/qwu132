@@ -131,7 +131,7 @@ Node::Node(){
 
     }
     std::string Node::nodeprint(){
-        std::string out=data;
+        string out=data;
         if(left==nullptr&&right==nullptr){
             return out;
         }
