@@ -90,7 +90,7 @@ void Set::print() const{
     cout<<"-"<<endl;
   }
   else {
-    string out=mRoot->nodeprint();
+    std::string out=mRoot->nodeprint();
     cout<<out<<endl;
   }
 } 
