@@ -127,7 +127,7 @@ using namespace std;
         }
 
     }
-    std::string& Node::nodeprint(){
+    std::string Node::nodeprint(){
         std::string out=data;
         if(left==nullptr&&right==nullptr){
             return out;
@@ -206,6 +206,7 @@ using namespace std;
                 return left->noderemove(value);
             }
         }
+        return 0;
     }
 
 

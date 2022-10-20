@@ -14,7 +14,7 @@ struct Node {
   bool nodecontains(const std::string& value);
   size_t nodeinsert(const std::string& value);
   const std::string& nodelookup(size_t n) const;
-  std::string& nodeprint();
+  std::string nodeprint();
   size_t noderemove(const std::string& value);
 
 };
