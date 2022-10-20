@@ -98,6 +98,9 @@ size_t Set::remove(const std::string& value){
   if(mRoot==nullptr){
     return 0;
   }
+  else if(mRoot->left==nullptr&&mRoot->right==nullptr&&value==mRoot->data){
+    mRoot=nullptr;
+  }
   else{
     return mRoot->noderemove(value);
   }

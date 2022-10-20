@@ -164,7 +164,9 @@ Node::Node(){
         if(data==value){
             if(left==nullptr&&right==nullptr){
                 count--;
+                
                 delete this;
+
             }
             else if(left==nullptr){
                 data=right->data;
