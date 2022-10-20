@@ -7,21 +7,16 @@ Set::Set(){
     mRoot=nullptr;
 }
 Set::Set(const Set& other){
-    if(other.mRoot==nullptr){
-        mRoot==nullptr;
-    }
-    else{
+    if(other.mRoot!=nullptr){
+    
       
       Node* newnode=new Node(*other.mRoot);
       mRoot=newnode;
     }
 }
 Set::Set(Set&& other){
-  if(other.mRoot==nullptr){
-        mRoot==nullptr;
-    }
-    else{
-      
+  if(other.mRoot!=nullptr){
+       
       mRoot=other.mRoot;
       other.mRoot=nullptr;
     }
@@ -81,7 +76,7 @@ const std::string& Set::lookup(size_t n) const{
   
 }
 void Set::print() const{
-
+  
 } 
 size_t Set::remove(const std::string& value){
   return 1;
