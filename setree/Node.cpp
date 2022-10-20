@@ -67,7 +67,9 @@ Node::Node(){
         }
         else if(value>data){
             if(right==nullptr){
-                right->data=value;
+                Node* newnode=new Node();
+                newnode->data=value;
+                right=newnode;
                 count++;
                 return 1;
             }
@@ -77,7 +79,9 @@ Node::Node(){
         }
         else {
             if(left==nullptr){
-                left->data=value;
+                Node* newnode=new Node();
+                newnode->data=value;
+                left=newnode;
                 count++;
                 return 1;
             }
