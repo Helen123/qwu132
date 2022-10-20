@@ -14,6 +14,9 @@ Set::Set(const Set& other){
       Node* newnode=new Node(*other.mRoot);
       mRoot=newnode;
     }
+    else{
+      mRoot = nullptr;
+    }
 }
 Set::Set(Set&& other){
   if(other.mRoot!=nullptr){
@@ -21,6 +24,10 @@ Set::Set(Set&& other){
       mRoot=other.mRoot;
       other.mRoot=nullptr;
     }
+    else{
+      mRoot=nullptr;
+    }
+
 }
   Set::~Set(){
     
