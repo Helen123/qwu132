@@ -10,7 +10,6 @@ struct Node {
   public:
   Node(const Node& other);
   ~Node();
-  Node(Node&& other);
   bool nodecontains(const std::string& value);
   size_t nodeinsert(const std::string& value);
   const std::string& nodelookup(size_t n) const;

@@ -25,30 +25,13 @@ using namespace std;
             this->count=left->count+right->count+1;
         }
     }
-    Node::Node(Node&& other){
-    
-       
-    data=other.data;
-    count=other.count;
-    left=other.left;
-    other.left=nullptr;
-    right=other.right;
-    other.right=nullptr;
-      
-    }
+
 
     Node::~Node(){
-       if(left!=nullptr&&right!=nullptr){
               delete left;
               delete right;
-        }
-        else{
         
-    
-        delete this;
-        
-        
-        } 
+      
     }
     bool Node::nodecontains(const std::string& value){
         if(value==data){
