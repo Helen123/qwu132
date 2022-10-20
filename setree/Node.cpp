@@ -128,16 +128,20 @@ Node::Node(){
         }
         else{
             if(left==nullptr){
-                out.insert(0,"-");
+                out.insert(0,"- ");
             }
             else{
-                out.insert(0,left->nodeprint());
+                std::string temp=left->nodeprint();
+                temp+=" ";
+                out.insert(0,temp);
             }
             if(right==nullptr){
-             out.insert(out.length(),"-");
+             out.insert(out.length()," -");
             }
             else{
-                 out.insert(out.length(),right->nodeprint());
+                std::string temp=" ";
+                temp+=right->nodeprint();
+                 out.insert(out.length(),temp);
             }
         }
         out.insert(0,"(");
