@@ -8,6 +8,7 @@ struct Node {
   Node*       right;
   size_t      count;
   public:
+  Node();
   Node(const Node& other);
   ~Node();
   bool nodecontains(const std::string& value);

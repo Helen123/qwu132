@@ -56,8 +56,9 @@ void Set::debug(){
   }
 size_t Set::insert(const std::string& value){
     if(mRoot==nullptr){
-      mRoot->data=value;
-      mRoot->count++;
+      Node* newnode=new Node();
+      newnode->data=value;
+      mRoot=newnode;
       return 1;
     }
     else{

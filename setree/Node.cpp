@@ -3,6 +3,13 @@
 #include <string>
 using namespace std;
 
+Node::Node(){
+    data="";
+    count=1;
+    left=nullptr;
+    right=nullptr;
+}
+
     Node::Node(const Node& other){
         if(other.left==nullptr&&other.right==nullptr){
              data =other.data;
