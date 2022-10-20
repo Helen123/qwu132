@@ -1,12 +1,14 @@
 #include "Set.h"
 #include <stdexcept>
+#include <iostream>
+#include <string>
 
 Set::Set(){
-    mRoot=NULL;
+    mRoot=nullptr;
 }
 Set::Set(const Set& other){
-    if(other.mRoot==NULL){
-        mRoot==NULL;
+    if(other.mRoot==nullptr){
+        mRoot==nullptr;
     }
     else{
       
@@ -15,8 +17,8 @@ Set::Set(const Set& other){
     }
 }
 Set::Set(Set&& other){
-  if(other.mRoot==NULL){
-        mRoot==NULL;
+  if(other.mRoot==nullptr){
+        mRoot==nullptr;
     }
     else{
       
@@ -57,7 +59,7 @@ void Set::debug(){
 
   }
 size_t Set::insert(const std::string& value){
-    if(mRoot==NULL){
+    if(mRoot==nullptr){
       mRoot->data=value;
       mRoot->count++;
       return 1;
@@ -67,8 +69,16 @@ size_t Set::insert(const std::string& value){
     }
   
   }
+
+
 const std::string& Set::lookup(size_t n) const{
-  return "";
+  if(mRoot==nullptr){
+      throw std::out_of_range("out of range");
+    }
+    else{
+      return mRoot->nodelookup(n);
+    }
+  
 }
 void Set::print() const{
 

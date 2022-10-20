@@ -1,4 +1,5 @@
 #include "Node.h"
+#include <stdexcept>
 
     Node::Node(const Node& other){
         if(other.left==nullptr&&other.right==nullptr){
@@ -79,6 +80,36 @@
             else{
             return left->nodeinsert(value);
             }
+        }
+
+    }
+    const std::string& Node::nodelookup(size_t n) const{
+        if(left==nullptr){
+            if(n=0){
+                return data;
+            }
+            else{
+                if(right==nullptr){
+                    throw std::out_of_range("out of range");
+                }
+                else{
+                    return right->nodelookup(n-1);
+                }
+            }
+        }
+        if(left->count==n){
+            return data;
+        }
+        else if(left->count<n){
+            if(right==nullptr){
+                throw std::out_of_range("out of range");
+            }
+            else{
+                return right->nodelookup(n-left->count-1);
+            }
+        }
+        else {
+            return left->nodelookup(n);
         }
 
     }

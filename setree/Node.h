@@ -12,6 +12,8 @@ struct Node {
   ~Node();
   bool nodecontains(const std::string& value);
   size_t nodeinsert(const std::string& value);
+  const std::string& nodelookup(size_t n) const;
+
 };
 
 // Use this file to declare your Node type.
