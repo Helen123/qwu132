@@ -74,7 +74,10 @@ Node::Node(){
                 return 1;
             }
             else{
-            return right->nodeinsert(value);
+            size_t temp= right->nodeinsert(value);
+            count+=temp;
+            return temp;
+    
             }
         }
         else {
@@ -86,7 +89,9 @@ Node::Node(){
                 return 1;
             }
             else{
-            return left->nodeinsert(value);
+            size_t temp= left->nodeinsert(value);
+            count+=temp;
+            return temp;
             }
         }
 
