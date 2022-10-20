@@ -48,7 +48,7 @@
                 return right->nodecontains(value);
             }
         }
-        else if(value<data){
+        else {
             if(left==nullptr){
                 return 0;
             }
@@ -85,7 +85,7 @@
     }
     const std::string& Node::nodelookup(size_t n) const{
         if(left==nullptr){
-            if(n=0){
+            if(n==0){
                 return data;
             }
             else{
