@@ -38,6 +38,7 @@ Set::Set(Set&& other){
 size_t Set::clear(){
     size_t out=count();
     delete mRoot;
+    mRoot = nullptr;
     return out;
   }
 

@@ -3,7 +3,7 @@
 #include <string>
 
 struct Node {
-  std::string data;
+  string      data;
   Node*       left;
   Node*       right;
   size_t      count;
