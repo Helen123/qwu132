@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+Node* helpremove(Node*& m, const std::string& value);
 
 Set::Set(){
     mRoot=nullptr;
@@ -100,7 +101,7 @@ size_t Set::remove(const std::string& value){
   }
   else{
     mRoot=helpremove(mRoot,value);
-    
+
   }
   return -1;
 }
