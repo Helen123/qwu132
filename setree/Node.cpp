@@ -160,84 +160,168 @@ Node::Node(){
 
 
     }
-    size_t Node::noderemove(const std::string& value){
-        if(data==value){
-            if(left==nullptr&&right==nullptr){
-                count--;
+    // size_t Node::noderemove(const std::string& value){
+    //     if(data==value){
+    //         if(left==nullptr&&right==nullptr){
+    //             count--;
                 
-                delete this;
+    //             delete this;
+
+    //         }
+    //         else if(left==nullptr){
+    //             data=right->data;
+    //             count=right->count;
+    //             Node* temp=right;
+    //             left=right->left;
+    //             right=right->right;
+    //             count--;
+    //             delete temp;
+    //         }
+    //         else if(right==nullptr){
+             
+    //             data=left->data;
+    //             count=left->count;
+    //             Node* temp=left;
+    //             left=left->left;
+    //             right=left->right;
+    //             count--;
+    //             delete temp;
+    //         }
+    //         else{
+    //             data=left->data;
+    //             Node* prevprev=this;
+    //             Node* prev=left;
+    //             Node* curr=left->right;
+    //             int a=0;
+    //             while(curr!=nullptr){
+    //                 if(a<1){
+    //                     data=curr->data;
+    //                     prevprev=prevprev->left;
+    //                     prev=prev->right;
+    //                     curr=curr->right;
+                        
+    //                 }
+    //                 else{
+    //                     data=curr->data;
+    //                     prevprev=prevprev->right;
+    //                     prev=prev->right;
+    //                     curr=curr->right;
+    //                 }
+    //                 a++;
+    //             }
+    //             count--;
+    //             delete prev;
+    //             prevprev->right=nullptr;
+                
+
+    //         }
+
+    //     }
+    //     else if(value>data){
+    //         if(right==nullptr){
+    //             return 0;
+    //         }
+    //         else{
+    //             size_t temp=right->noderemove(value);
+    //             count-=temp;
+    //             return temp;
+    //         }
+    //     }    
+    //     else{
+    //         if(left==nullptr){
+    //             return 0;
+    //         }
+    //         else{
+    //             size_t temp=left->noderemove(value);
+    //             count-=temp;
+    //             return temp;
+    //         }
+    //     }
+    //     return 0;
+    // }
+    Node* helpremove(Node*& m, const std::string& value){
+        if(m->data==value){
+            if(m->left==nullptr&&m->right==nullptr){
+                m->count--;
+                
+                m=nullptr;
+                return m;
 
             }
-            else if(left==nullptr){
-                data=right->data;
-                count=right->count;
-                Node* temp=right;
-                left=right->left;
-                right=right->right;
-                count--;
+            else if(m->left==nullptr){
+                m->data=m->right->data;
+                m->count=m->right->count;
+                Node* temp=m->right;
+                m->left=m->right->left;
+                m->right=m->right->right;
+                m->count--;
                 delete temp;
+                temp=nullptr;
+                return m;
             }
-            else if(right==nullptr){
+            else if(m->right==nullptr){
              
-                data=left->data;
-                count=left->count;
-                Node* temp=left;
-                left=left->left;
-                right=left->right;
-                count--;
+                m->data=m->left->data;
+                m->count=m->left->count;
+                Node* temp=m->left;
+                m->left=m->left->left;
+                m->right=m->left->right;
+                m->count--;
                 delete temp;
+                temp=nullptr;
+                return m;
             }
             else{
-                data=left->data;
-                Node* prevprev=this;
-                Node* prev=left;
-                Node* curr=left->right;
+                m->data=m->left->data;
+                Node* prevprev=m;
+                Node* prev=m->left;
+                Node* curr=m->left->right;
                 int a=0;
                 while(curr!=nullptr){
                     if(a<1){
-                        data=curr->data;
+                        m->data=curr->data;
                         prevprev=prevprev->left;
                         prev=prev->right;
                         curr=curr->right;
                         
                     }
                     else{
-                        data=curr->data;
+                        m->data=curr->data;
                         prevprev=prevprev->right;
                         prev=prev->right;
                         curr=curr->right;
                     }
                     a++;
                 }
-                count--;
+                m->count--;
                 delete prev;
-                prevprev->right=nullptr;
-                
+                prevprev=nullptr;
+                return m;
 
             }
 
         }
-        else if(value>data){
-            if(right==nullptr){
-                return 0;
+        else if(value>m->data){
+            if(m->right==nullptr){
+                return m;
             }
             else{
-                size_t temp=right->noderemove(value);
-                count-=temp;
-                return temp;
+                m->right=helpremove(m->right,value);
+                m->count=m->right->count+m->left->count+1;
+                return m;
             }
         }    
         else{
-            if(left==nullptr){
-                return 0;
+            if(m->left==nullptr){
+                return m;
             }
             else{
-                size_t temp=left->noderemove(value);
-                count-=temp;
-                return temp;
+                m->left=helpremove(m->left,value);
+                m->count=m->right->count+m->left->count+1;
+                return m;
             }
         }
-        return 0;
+        return m;
     }
 
 

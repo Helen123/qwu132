@@ -16,6 +16,7 @@ struct Node {
   const std::string& nodelookup(size_t n) const;
   std::string nodeprint();
   size_t noderemove(const std::string& value);
+  Node
 
 };
 
