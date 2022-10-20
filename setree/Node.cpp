@@ -163,6 +163,7 @@ Node::Node(){
     size_t Node::noderemove(const std::string& value){
         if(data==value){
             if(left==nullptr&&right==nullptr){
+                count--;
                 delete this;
             }
             else if(left==nullptr){
@@ -171,6 +172,7 @@ Node::Node(){
                 Node* temp=right;
                 left=right->left;
                 right=right->right;
+                count--;
                 delete temp;
             }
             else if(right==nullptr){
@@ -180,19 +182,35 @@ Node::Node(){
                 Node* temp=left;
                 left=left->left;
                 right=left->right;
+                count--;
                 delete temp;
             }
             else{
                 data=left->data;
+                Node* prevprev=this;
                 Node* prev=left;
                 Node* curr=left->right;
+                int a=0;
                 while(curr!=nullptr){
-                    data=curr->data;
-                    prev=prev->right;
-                    curr=curr->right;
+                    if(a<1){
+                        data=curr->data;
+                        prevprev=prevprev->left;
+                        prev=prev->right;
+                        curr=curr->right;
+                        
+                    }
+                    else{
+                        data=curr->data;
+                        prevprev=prevprev->right;
+                        prev=prev->right;
+                        curr=curr->right;
+                    }
+                    a++;
                 }
-                delete curr;
-                prev->right=nullptr;
+                count--;
+                delete prev;
+                prevprev->right=nullptr;
+                
 
             }
 
@@ -202,7 +220,9 @@ Node::Node(){
                 return 0;
             }
             else{
-                return right->noderemove(value);
+                size_t temp=right->noderemove(value);
+                count-=temp;
+                return temp;
             }
         }    
         else{
@@ -210,7 +230,9 @@ Node::Node(){
                 return 0;
             }
             else{
-                return left->noderemove(value);
+                size_t temp=left->noderemove(value);
+                count-=temp;
+                return temp;
             }
         }
         return 0;
