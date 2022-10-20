@@ -37,7 +37,7 @@ Set::Set(Set&& other){
 
 size_t Set::clear(){
     size_t out=count();
-    delete this;
+    delete mRoot;
     return out;
   }
 
