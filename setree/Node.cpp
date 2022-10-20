@@ -14,14 +14,18 @@ Node::Node(){
         if(other.left==nullptr&&other.right==nullptr){
              data =other.data;
              count=1;
+             left=nullptr;
+             right=nullptr;
         }
         else if(other.left!=nullptr&&other.right==nullptr){
                 this->left=new Node(*other.left);
+                right=nullptr;
                 data =other.data;
                 count=left->count+1;
         }
         else if(other.right!=nullptr&&other.left==nullptr){
                 this->right=new Node(*other.right);
+                left=nullptr;
                 data =other.data;
                 count=right->count+1;
         }
