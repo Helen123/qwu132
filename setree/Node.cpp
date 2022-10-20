@@ -2,7 +2,7 @@
 #include <stdexcept>
 #include <string>
 using namespace std;
-Node* helpremove(Node*& m, const std::string& value);
+
 
 Node::Node(){
     data="";
