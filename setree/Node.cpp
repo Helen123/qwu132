@@ -309,14 +309,18 @@ Node::Node(){
             }
             else{
                 m->right=helpremove(m->right,value);
-                if(m->right!=nullptr&&m->left!=nullptr){
+                  if(m->right!=nullptr&&m->left!=nullptr){
                 m->count=m->right->count+m->left->count+1;}
-                else if(m->right==nullptr){
+                else if(m->right==nullptr&&m->left!=nullptr){
                     m->count=m->left->count+1;
                 }
-                else{
+                else if(m->right!=nullptr&&m->left==nullptr){
                     m->count=m->right->count+1;
                 }
+                else{
+                    m->count=1;
+                }
+             
                 return m;
             }
         }    
@@ -328,11 +332,14 @@ Node::Node(){
               m->left=helpremove(m->left,value);
                 if(m->right!=nullptr&&m->left!=nullptr){
                 m->count=m->right->count+m->left->count+1;}
-                else if(m->right==nullptr){
+                else if(m->right==nullptr&&m->left!=nullptr){
                     m->count=m->left->count+1;
                 }
-                else{
+                else if(m->right!=nullptr&&m->left==nullptr){
                     m->count=m->right->count+1;
+                }
+                else{
+                    m->count=1;
                 }
                 return m;
             }
