@@ -100,7 +100,14 @@ size_t Set::remove(const std::string& value){
     return 0;
   }
   else{
+    size_t old= mRoot->count;
     mRoot=helpremove(mRoot,value);
+    if(mRoot==nullptr){
+      return 1;
+    }
+    else{
+    size_t change= old-(mRoot->count);
+    return change;
     
 
   }
