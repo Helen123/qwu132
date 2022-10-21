@@ -255,7 +255,7 @@ Node::Node(){
                 m->count=m->right->count;
                 Node* temp=m->right;
                 m->left=m->right->left;
-                m->right=m->right->right;
+                m->right=temp->right;
                 m->count--;
                 delete temp;
                 temp=nullptr;
@@ -267,7 +267,7 @@ Node::Node(){
                 m->count=m->left->count;
                 Node* temp=m->left;
                 m->left=m->left->left;
-                m->right=m->left->right;
+                m->right=temp->right;
                 m->count--;
                 delete temp;
                 temp=nullptr;
