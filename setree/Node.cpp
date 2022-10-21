@@ -243,7 +243,8 @@ Node::Node(){
     Node* helpremove(Node*& m, const std::string& value){
         if(m->data==value){
             if(m->left==nullptr&&m->right==nullptr){
-                m->count--;
+                delete m;
+
                 
                 m=nullptr;
                 return m;
