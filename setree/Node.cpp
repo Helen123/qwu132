@@ -40,8 +40,10 @@ Node::Node(){
 
 
     Node::~Node(){
-              delete left;
-              delete right;
+        if(left!=nullptr){
+              delete left;}
+              if(right!=nullptr){
+              delete right;}
         
       
     }
