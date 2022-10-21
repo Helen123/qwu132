@@ -113,3 +113,4 @@ size_t Set::remove(const std::string& value){
   }
   return -1;
 }
+}
