@@ -259,7 +259,8 @@ Node::Node(){
                 m->left=m->right->left;
                 m->right=temp->right;
                 m->count--;
-                delete temp;
+                temp->left=nullptr;
+                temp->right=nullptr;
                 temp=nullptr;
                 return m;
             }
@@ -271,7 +272,8 @@ Node::Node(){
                 m->left=m->left->left;
                 m->right=temp->right;
                 m->count--;
-                delete temp;
+                temp->left=nullptr;
+                temp->right=nullptr;
                 temp=nullptr;
                 return m;
             }
