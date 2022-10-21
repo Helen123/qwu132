@@ -15,10 +15,8 @@ struct Node {
   size_t nodeinsert(const std::string& value);
   const std::string& nodelookup(size_t n) const;
   std::string nodeprint();
-  size_t noderemove(const std::string& value);
-  Node
-
-};
+};  
+Node* helpremove(Node*& m, const std::string& value);
 
 // Use this file to declare your Node type.
 // Implement Node member functions and helper functions in Node.cpp.

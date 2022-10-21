@@ -101,6 +101,7 @@ size_t Set::remove(const std::string& value){
   }
   else{
     mRoot=helpremove(mRoot,value);
+    
 
   }
   return -1;
