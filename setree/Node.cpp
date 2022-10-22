@@ -248,13 +248,13 @@ Node::Node(){
         if(m==nullptr){
             return m;
         }
-        Node* curr =m->right;
-        Node* prev= m;
-        while(curr!=nullptr){
-            curr=curr->right;
-            prev=prev->right;
+        else if(m->left==nullptr){
+            return m;
         }
-        return prev;
+        else{
+            return lagestNode(m->left);
+        }
+        
 
     }
     Node* helpremove(Node*& m, const std::string& value){
