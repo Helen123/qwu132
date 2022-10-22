@@ -74,11 +74,9 @@ Node::Node(){
         }
         else if(value>data){
             if(right==nullptr){
-                Node* newnode=new Node();
-                newnode->data=value;
-                right=newnode;
+                right=new Node();
+                right->data=value;
                 count++;
-                newnode=nullptr;
                 return 1;
             }
             else{
@@ -90,10 +88,8 @@ Node::Node(){
         }
         else {
             if(left==nullptr){
-                Node* newnode=new Node();
-                newnode->data=value;
-                left=newnode;
-                newnode=nullptr;
+                left=new Node();
+                left->data=value;
                 count++;
                 return 1;
             }
