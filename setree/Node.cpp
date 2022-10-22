@@ -19,20 +19,28 @@ Node::Node(){
              right=nullptr;
         }
         else if(other.left!=nullptr&&other.right==nullptr){
-                this->left=new Node(*other.left);
+                Node* temp =new Node(*other.left);
+                left=temp;
+                temp=nullptr;
                 right=nullptr;
                 data =other.data;
                 count=left->count+1;
         }
         else if(other.right!=nullptr&&other.left==nullptr){
-                this->right=new Node(*other.right);
+                Node* temp=new Node(*other.right);
+                right=temp;
+                temp=nullptr;
                 left=nullptr;
                 data =other.data;
                 count=right->count+1;
         }
         else{
-            this->left=new Node(*other.left);
-            this->right=new Node(*other.right);
+            Node* temp =new Node(*other.left);
+            Node* tempt=new Node(*other.right);
+            left=temp;
+            temp=nullptr;
+            right=tempt;
+            tempt=nullptr;
             data =other.data;
             this->count=left->count+right->count+1;
         }
@@ -74,9 +82,11 @@ Node::Node(){
         }
         else if(value>data){
             if(right==nullptr){
-                right=new Node();
-                right->data=value;
+                Node* newnode=new Node();
+                newnode->data=value;
+                right=newnode;
                 count++;
+                newnode=nullptr;
                 return 1;
             }
             else{
@@ -88,8 +98,10 @@ Node::Node(){
         }
         else {
             if(left==nullptr){
-                left=new Node();
-                left->data=value;
+                Node* newnode=new Node();
+                newnode->data=value;
+                left=newnode;
+                newnode=nullptr;
                 count++;
                 return 1;
             }
