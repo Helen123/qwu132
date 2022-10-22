@@ -287,7 +287,7 @@ Node::Node(){
                 m->data=temp->data;
                 m->left=helpremove(m->left,temp->data);
                 if(m->left==nullptr){
-                   m->count=m->left->count+1; 
+                   m->count=m->right->count+1; 
                 }
                 else{
                 m->count=m->left->count+m->right->count+1;}
