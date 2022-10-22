@@ -77,6 +77,7 @@ Node::Node(){
                 Node* newnode=new Node();
                 newnode->data=value;
                 right=newnode;
+                newnode=nullptr;
                 count++;
                 return 1;
             }
@@ -92,6 +93,7 @@ Node::Node(){
                 Node* newnode=new Node();
                 newnode->data=value;
                 left=newnode;
+                newnode=nullptr;
                 count++;
                 return 1;
             }
@@ -326,7 +328,7 @@ Node::Node(){
                 else{
                     m->count=1;
                 }
-             
+                temp=nullptr;
                 return m;
             }
         }    
@@ -349,6 +351,7 @@ Node::Node(){
                 else{
                     m->count=1;
                 }
+                temp=nullptr;
                 return m;
             }
         }
