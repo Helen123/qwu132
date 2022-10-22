@@ -244,7 +244,23 @@ Node::Node(){
     //     }
     //     return 0;
     // }
+    Node* lagestNode(Node* m){
+        if(m==nullptr){
+            return m;
+        }
+        Node* curr =m->right;
+        Node* prev= m;
+        while(curr!=nullptr){
+            curr=curr->right;
+            prev=prev->right;
+        }
+        return prev;
+
+    }
     Node* helpremove(Node*& m, const std::string& value){
+        if(m==nullptr){
+            return m;
+        }
         if(m->data==value){
             if(m->left==nullptr&&m->right==nullptr){
                 delete m;
@@ -255,56 +271,24 @@ Node::Node(){
 
             }
             else if(m->left==nullptr){
-                m->data=m->right->data;
-                m->count=m->right->count;
+                
                 Node* temp=m->right;
-                m->left=m->right->left;
-                m->right=temp->right;
-                temp->left=nullptr;
-                temp->right=nullptr;
-                temp=nullptr;
-                return m;
+                m->right=nullptr;
+                return temp;
             }
             else if(m->right==nullptr){
              
-                m->data=m->left->data;
-                m->count=m->left->count;
                 Node* temp=m->left;
-                m->left=m->left->left;
-                m->right=temp->right;
-                temp->left=nullptr;
-                temp->right=nullptr;
-                temp=nullptr;
-                return m;
+                m->left=nullptr;
+                return temp;
             }
             else{
-                m->data=m->left->data;
-                //Node* prevprev=m;
-                Node* prev=m->left;
-                Node* curr=m->left->right;
-                int a=0;
-                while(curr!=nullptr){
-                    if(a<1){
-                        m->data=curr->data;
-                        prev->count--;
-                        //prevprev=prevprev->left;
-                        prev=prev->right;
-                        curr=curr->right;
-                        
-                    }
-                    else{
-                        m->data=curr->data;
-                        prev->count--;
-                        //prevprev=prevprev->right;
-                        prev=prev->right;
-                        curr=curr->right;
-                    }
-                    a++;
-                }
-                m->count--;
-                delete prev;
-                prev=nullptr;
+                Node* temp=lagestNode(m->right);
+                m->data=temp->data;
+                m->right=helpremove(m->right,m->data);
+                m->count=m->left->count+m->right->count+1;
                 return m;
+               
 
             }
 
