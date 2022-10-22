@@ -284,10 +284,10 @@ Node::Node(){
             }
             else{
                 Node* temp=lagestNode(m->left);
+                m->left=helpremove(m->left,temp->data);
                 m->data=temp->data;
-                m->left=helpremove(m->left,m->data);
                 if(m->left==nullptr){
-                   m->count=m->right->count+1; 
+                   m->count=m->left->count+1; 
                 }
                 else{
                 m->count=m->left->count+m->right->count+1;}
@@ -302,9 +302,7 @@ Node::Node(){
                 return m;
             }
             else{
-                Node* temp=m->right;
-                m->right=nullptr;
-                m->right=helpremove(temp,value);
+                m->right=helpremove(m->right,value);
                   if(m->right!=nullptr&&m->left!=nullptr){
                 m->count=m->right->count+m->left->count+1;}
                 else if(m->right==nullptr&&m->left!=nullptr){
@@ -316,7 +314,6 @@ Node::Node(){
                 else{
                     m->count=1;
                 }
-                temp=nullptr;
                 return m;
             }
         }    
@@ -325,9 +322,7 @@ Node::Node(){
                 return m;
             }
             else{
-                Node* temp=m->left;
-                m->left=nullptr;
-                m->left=helpremove(temp,value);
+                m->left=helpremove(m->left,value);
                 if(m->right!=nullptr&&m->left!=nullptr){
                 m->count=m->right->count+m->left->count+1;}
                 else if(m->right==nullptr&&m->left!=nullptr){
@@ -339,7 +334,6 @@ Node::Node(){
                 else{
                     m->count=1;
                 }
-                temp=nullptr;
                 return m;
             }
         }
