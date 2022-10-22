@@ -77,6 +77,7 @@ Node::Node(){
                 Node* newnode=new Node();
                 newnode->data=value;
                 right=newnode;
+                count++;
                 newnode=nullptr;
                 return 1;
             }
