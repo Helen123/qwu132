@@ -283,11 +283,11 @@ Node::Node(){
                 return temp;
             }
             else{
-                Node* temp=lagestNode(m->right);
+                Node* temp=lagestNode(m->left);
                 m->data=temp->data;
-                m->right=helpremove(m->right,m->data);
-                if(m->right==nullptr){
-                   m->count=m->left->count+1; 
+                m->left=helpremove(m->left,m->data);
+                if(m->left==nullptr){
+                   m->count=m->right->count+1; 
                 }
                 else{
                 m->count=m->left->count+m->right->count+1;}
