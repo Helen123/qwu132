@@ -258,7 +258,6 @@ Node::Node(){
                 Node* temp=m->right;
                 m->left=m->right->left;
                 m->right=temp->right;
-                m->count--;
                 temp->left=nullptr;
                 temp->right=nullptr;
                 temp=nullptr;
@@ -271,7 +270,6 @@ Node::Node(){
                 Node* temp=m->left;
                 m->left=m->left->left;
                 m->right=temp->right;
-                m->count--;
                 temp->left=nullptr;
                 temp->right=nullptr;
                 temp=nullptr;
@@ -286,6 +284,7 @@ Node::Node(){
                 while(curr!=nullptr){
                     if(a<1){
                         m->data=curr->data;
+                        prev->count--;
                         //prevprev=prevprev->left;
                         prev=prev->right;
                         curr=curr->right;
@@ -293,6 +292,7 @@ Node::Node(){
                     }
                     else{
                         m->data=curr->data;
+                        prev->count--;
                         //prevprev=prevprev->right;
                         prev=prev->right;
                         curr=curr->right;
