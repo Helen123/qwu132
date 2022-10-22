@@ -248,11 +248,11 @@ Node::Node(){
         if(m==nullptr){
             return m;
         }
-        else if(m->left==nullptr){
+        else if(m->right==nullptr){
             return m;
         }
         else{
-            return lagestNode(m->left);
+            return lagestNode(m->right);
         }
         
 
