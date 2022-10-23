@@ -282,12 +282,16 @@ Node::Node(){
                 
                 Node* temp=m->right;
                 m->right=nullptr;
+                delete m;
+                m=nullptr;
                 return temp;
             }
             else if(m->right==nullptr){
              
                 Node* temp=m->left;
                 m->left=nullptr;
+                delete m;
+                m=nullptr;
                 return temp;
             }
             else{
@@ -299,6 +303,7 @@ Node::Node(){
                 }
                 else{
                 m->count=m->left->count+m->right->count+1;}
+
                 return m;
                
 
