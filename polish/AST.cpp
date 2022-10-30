@@ -9,11 +9,25 @@ using std::string;
 
 bool isNumber(string& str)
 {
-    for (char const &c : str) {
-       
-        // using the std::isdigit() function
-        if (std::isdigit(c) == 0)
-          return false;
+    bool havedot=0;
+    for (int i=0;i<str.length();i++) {
+       char c =str[i];
+       if(i=0){
+            if (std::isdigit(c) == 0&&c!='+'&&c!='-')
+            return false;
+       }
+       else{
+        
+        if (std::isdigit(c) == 0){
+            if(c=='.'&&havedot==0){
+                havedot=1;
+            }
+            else{
+                return false;
+            }
+        }
+         
+       }
     }
     return true;
 }
