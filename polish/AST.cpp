@@ -85,7 +85,8 @@ AST* AST::parse(const std::string& expression) {
         
     }
     if(newstack.havetwo()==1){
-         throw std::runtime_error("Too many operands.");
+         std::string const outerror = "too many output: "+newstack.getcount();
+        throw std::runtime_error(outerror);
     }
     if(newstack.haveone()==0){
          throw std::runtime_error("No input.");

@@ -27,8 +27,9 @@ std::string num::prefix()  const{
     return stream.str();
 }
 std::string num::postfix() const{
-    std:: string out=std::to_string(number);
-    return out;
+    std::ostringstream stream;
+    stream << number;
+    return stream.str();
 }
 double num::value() const{
     return number;

@@ -39,6 +39,7 @@ stack::stack(){
       }
       temp=temp->next;
     }
+    temp=nullptr;
     return 1;
 
   }
@@ -48,3 +49,13 @@ stack::stack(){
     }
     return 0;
     }
+size_t stack::getcount(){
+  Node* temp= top;
+  size_t count=0;
+  while(temp!=nullptr){
+    count++;
+    temp=temp->next;
+  }
+  temp=nullptr;
+  return count;
+}

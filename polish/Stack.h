@@ -20,6 +20,7 @@ public:
   Node* pop();
   bool havetwo();
   bool haveone();
+  size_t getcount();
 
 
 };
