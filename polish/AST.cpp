@@ -10,9 +10,9 @@ using std::string;
 bool isNumber(string& str)
 {
     bool havedot=0;
-    for (int i=0;i<str.length();i++) {
+    for (size_t i=0;i<str.length();i++) {
        char c =str[i];
-       if(i=0){
+       if(i==0){
             if (std::isdigit(c) == 0&&c!='+'&&c!='-')
             return false;
        }
