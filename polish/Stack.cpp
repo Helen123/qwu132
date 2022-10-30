@@ -6,6 +6,7 @@ Node::Node(){
   next=nullptr;
 }
 Node::~Node(){
+  delete element;
 delete next;
 }
 stack::stack(){
