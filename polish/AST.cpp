@@ -39,7 +39,7 @@ AST* AST::parse(const std::string& expression) {
     while(my_stream){
         my_stream>>n;
         if(isNumber(n)){
-            num* newnumber=new num(stod(n));
+            num* newnumber=new num(std::stod(n));
             newstack.push(newnumber);
             }
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
