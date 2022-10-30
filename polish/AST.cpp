@@ -42,9 +42,9 @@ AST* AST::parse(const std::string& expression) {
     istringstream my_stream(expression);
     std::string n;
     while(my_stream>>n){
-        std:: cout<<"inwhile"<<std::endl;
+        //std:: cout<<"inwhile"<<std::endl;
         if(isNumber(n)){
-            std:: cout<<"innumber"<<std::endl;
+           // std:: cout<<"innumber"<<std::endl;
             double d1;
             std::stringstream(n) >> d1;
             num* newnumber=new num(d1);
@@ -59,7 +59,7 @@ AST* AST::parse(const std::string& expression) {
             }
             else{
                 if(n=="+"){
-                     std:: cout<<"inadd"<<std::endl;
+                     //std:: cout<<"inadd"<<std::endl;
                     plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
                     newstack.push(newplus);
                 }
