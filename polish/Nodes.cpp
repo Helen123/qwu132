@@ -40,7 +40,7 @@ double num::value() const{
 
 
 //plus:
-plus::plus(AST*& l, AST*& r){
+plus::plus(AST*& r, AST*& l){
     if(l!=nullptr&&r!=nullptr){
         left=l;
         l=nullptr;
@@ -81,7 +81,7 @@ double plus::value() const{
 }
 
 //minus:
-minus::minus(AST*& l, AST*& r){
+minus::minus(AST*& r, AST*& l){
     if(l!=nullptr&&r!=nullptr){
         left=l;
         l=nullptr;
@@ -122,7 +122,7 @@ double minus::value() const{
 }
 
 //multi:
-multi::multi(AST*& l, AST*& r){
+multi::multi(AST*& r, AST*& l){
     if(l!=nullptr&&r!=nullptr){
         left=l;
         l=nullptr;
@@ -163,7 +163,7 @@ double multi::value() const{
 }
 
 //divi:
-divi::divi(AST*& l, AST*& r){
+divi::divi(AST*& r, AST*& l){
     if(l!=nullptr&&r!=nullptr){
         left=l;
         l=nullptr;
@@ -207,7 +207,7 @@ double divi::value() const{
 }
 
 //remai:
-remai::remai(AST*& l, AST*& r){
+remai::remai(AST*& r, AST*& l){
     if(l!=nullptr&&r!=nullptr){
         left=l;
         l=nullptr;

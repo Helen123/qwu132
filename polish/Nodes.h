@@ -22,7 +22,7 @@ class plus: public AST{
         AST*             right;
         std::string self="plus";
 
-        plus(AST*& l, AST*& r);
+        plus(AST*& r, AST*& l);
         ~plus();
 
         std::string prefix()  const;
@@ -36,7 +36,7 @@ class minus: public AST{
         AST*             right;
         std::string self="minus";
 
-        minus(AST*& l, AST*& r);
+        minus(AST*& r, AST*& l);
         ~minus();
 
         std::string prefix()  const;
@@ -52,7 +52,7 @@ class multi: public AST{
         AST*             right;
         std::string self="multi";
 
-        multi(AST*& l, AST*& r);
+        multi(AST*& r, AST*& l);
         ~multi();
 
         std::string prefix()  const;
@@ -66,7 +66,7 @@ class divi: public AST{
         AST*             right;
         std::string self="divi";
 
-        divi(AST*& l, AST*& r);
+        divi(AST*& r, AST*& l);
         ~divi();
 
         std::string prefix()  const;
