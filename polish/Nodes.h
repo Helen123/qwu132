@@ -92,10 +92,9 @@ class remai: public AST{
 class negate: public AST{
     public:
         AST*             left;
-        AST*             right;
         std::string self="negate";
 
-        negate(AST*& l, AST*& r);
+        negate(AST*& l);
         ~negate();
 
         std::string prefix()  const;

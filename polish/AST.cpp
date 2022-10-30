@@ -26,36 +26,57 @@ AST* AST::parse(const std::string& expression) {
         my_stream>>n;
         if(isNumber(n)){
             num* newnumber=new num(stod(n));
-            newstack.push(&newnumber);
+            newstack.push(newnumber);
             }
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
-            if(newstack.havetwo()==0){
+            if(n=="~"&&newstack.haveone()==0){
                 throw std::runtime_error("Not enough operands.");
             }
-            if(n=="+"){
-            plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
-            newstack.push(newplus);
+            else if(newstack.havetwo()==0){
+                throw std::runtime_error("Not enough operands.");
             }
-            else if(n=="-"){
-            plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
-            newstack.push(newplus);
-            }
-                
+            else{
+                if(n=="+"){
+                    plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
+                    newstack.push(newplus);
+                }
+                else if(n=="-"){
+                    minus* newast=new minus(newstack.pop()->element,newstack.pop()->element);
+                    newstack.push(newast);
+                 }
+                 else if(n=="*"){
+                    multi* newast=new multi(newstack.pop()->element,newstack.pop()->element);
+                    newstack.push(newast);
+                 }
+                 else if(n=="/"){
+                    divi* newast=new divi(newstack.pop()->element,newstack.pop()->element);
+                    newstack.push(newast);
+                 }
+                 else if(n=="%"){
+                    remai* newast=new remai(newstack.pop()->element,newstack.pop()->element);
+                    newstack.push(newast);
+                 }
+                 else{
 
+                    negate* newast=new negate(newstack.pop()->element);
+                    newstack.push(newast);
+                 }
+
+            }
         }
         else{
             std::string const outerror = "Invalid token: "+n;
             throw std::runtime_error(outerror);
         }
-               else if(n=="+"){
-
-            plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
-            newstack.push(&newplus);
-        }
-        else if(n=="-")
-
         
     }
+    if(newstack.havetwo()==1){
+         throw std::runtime_error("Too many operands.");
+    }
+    if(newstack.haveone()==0){
+         throw std::runtime_error("No input.");
+    }
+    return newstack.gettop()->element;
         
 
 

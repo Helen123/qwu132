@@ -251,51 +251,35 @@ double remai::value() const{
 
 
 //negate:
-negate::negate(AST*& l, AST*& r){
-    if(l==nullptr&&r==nullptr){
+negate::negate(AST*& l){
+    if(l==nullptr){
         throw std::runtime_error("Not enough operands.");
-    }
-    else if(l!=nullptr&&r!=nullptr){
-        throw std::runtime_error("Too many operands.");
     }
     else{
         left=l;
         l=nullptr;
-        right=r;
-        r=nullptr;
     }
 }   
 negate::~negate(){
     delete left;
-    delete right;
 }
 std::string negate::prefix()  const{
     std::string out="~";
-    if(left!=nullptr){
-        std:: string first=" ";
-        first+=left->prefix();
-        out.insert(out.length(),first);
-    }
     std:: string first=" ";
     first+=left->prefix();
-    std:: string second=" ";
-    second+=right->prefix();
     out.insert(out.length(),first);
-    out.insert(out.length(),second);
     return out;
 }
 std::string negate::postfix() const{
-    std::string out="+";
-    std:: string first=right->postfix();
-    first+=" ";
+    std::string out="~";
     std:: string second=left->postfix();
     second+=" ";
-    out.insert(0,first);
     out.insert(0,second);
     return out;
 }
 double negate::value() const{
-    double out=left->value()+right->value();
+    double out;
+    out =0-left->value();
     return out;
 }
 

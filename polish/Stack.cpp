@@ -42,3 +42,9 @@ stack::stack(){
     return 1;
 
   }
+    bool stack::haveone(){
+    if(top!=nullptr){
+      return 1;
+    }
+    return 0;
+    }

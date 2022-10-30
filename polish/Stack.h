@@ -19,6 +19,7 @@ public:
   void push(AST* a);
   Node* pop();
   bool havetwo();
+  bool haveone();
 
 
 };
