@@ -2,10 +2,12 @@
 #include "Nodes.h"
 #include "Stack.h"
 #include <sstream>
+#include <iostream>
 #include <string>
 #include <ctype.h>
 using std::istringstream;
 using std::string;
+//using namespace std;
 
 bool isNumber(string& str)
 {
@@ -36,8 +38,8 @@ AST* AST::parse(const std::string& expression) {
     stack newstack;
     istringstream my_stream(expression);
     std::string n;
-    while(my_stream){
-        my_stream>>n;
+    while(my_stream>>n){
+        //std:: cout<<"inwhile"<<std::endl;
         if(isNumber(n)){
             double d1;
             std::stringstream(n) >> d1;

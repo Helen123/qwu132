@@ -1,6 +1,10 @@
 #include "Stack.h"
 
 // Implement your Stack member functions here.
+Node::Node(){
+  element=nullptr;
+  next=nullptr;
+}
 Node::~Node(){
 delete next;
 }
@@ -22,6 +26,7 @@ stack::stack(){
     a=nullptr;
     newnode->next=top;
     top=newnode;
+    newnode=nullptr;
   }
   Node* stack::pop(){
     Node* temp=top;

@@ -7,6 +7,7 @@
 struct Node{
     AST* element;
     Node* next;
+    Node();
     ~Node();
 };
 class stack{
