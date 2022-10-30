@@ -12,6 +12,9 @@ using std::string;
 bool isNumber(string& str)
 {
     bool havedot=0;
+    if(str=="+"||str=="-"){
+        return 0;
+    }
     for (size_t i=0;i<str.length();i++) {
        char c =str[i];
        if(i==0){
@@ -39,8 +42,9 @@ AST* AST::parse(const std::string& expression) {
     istringstream my_stream(expression);
     std::string n;
     while(my_stream>>n){
-        //std:: cout<<"inwhile"<<std::endl;
+        std:: cout<<"inwhile"<<std::endl;
         if(isNumber(n)){
+            std:: cout<<"innumber"<<std::endl;
             double d1;
             std::stringstream(n) >> d1;
             num* newnumber=new num(d1);
@@ -55,6 +59,7 @@ AST* AST::parse(const std::string& expression) {
             }
             else{
                 if(n=="+"){
+                     std:: cout<<"inadd"<<std::endl;
                     plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
                     newstack.push(newplus);
                 }
