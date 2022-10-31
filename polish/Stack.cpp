@@ -27,7 +27,7 @@ stack::stack(){
   void stack::push(AST* a){
     Node* newnode=new Node();
     newnode->element=a;
-    a=nullptr;
+    //a=nullptr;
     newnode->next=top;
     top=newnode;
     newnode=nullptr;

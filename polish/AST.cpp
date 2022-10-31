@@ -38,7 +38,7 @@ bool isNumber(string& str)
 }
 
 AST* AST::parse(const std::string& expression) {
-    stack newstack;
+    stack* newstack=new stack();
     istringstream my_stream(expression);
     std::string n;
     while(my_stream>>n){
@@ -48,15 +48,15 @@ AST* AST::parse(const std::string& expression) {
             double d1;
             std::stringstream(n) >> d1;
             num* newnumber=new num(d1);
-            newstack.push(newnumber);
+            newstack->push(newnumber);
             newnumber=nullptr;
             }
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
-            if(n=="~"&&newstack.gettop()==nullptr){
+            if(n=="~"&&newstack->gettop()==nullptr){
                 //std:: cout<<"innegawrong"<<std::endl;
                 throw std::runtime_error("Not enough operands.");
             }
-            else if(n!="~"&&newstack.havetwo()==0){
+            else if(n!="~"&&newstack->havetwo()==0){
                 //std:: cout<<n<<std::endl;
                 //std:: cout<<"innumberwrong"<<std::endl;
                 throw std::runtime_error("Not enough operands.");
@@ -64,67 +64,67 @@ AST* AST::parse(const std::string& expression) {
             else{
                 if(n=="+"){
                      //std:: cout<<"inadd"<<std::endl;
-                     Node* temp1=newstack.pop();
-                     Node* temp2=newstack.pop();
+                     Node* temp1=newstack->pop();
+                     Node* temp2=newstack->pop();
                      plus* newplus=new plus(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
                      temp2=nullptr;
-                     newstack.push(newplus);
+                     newstack->push(newplus);
                      newplus =nullptr;
                 }
                 else if(n=="-"){
-                    Node* temp1=newstack.pop();
-                     Node* temp2=newstack.pop();
+                    Node* temp1=newstack->pop();
+                     Node* temp2=newstack->pop();
                       minus* newast=new minus(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
                      temp2=nullptr;
                 
-                    newstack.push(newast);
+                    newstack->push(newast);
                     newast=nullptr;
                  }
                  else if(n=="*"){
-                    Node* temp1=newstack.pop();
-                     Node* temp2=newstack.pop();
+                    Node* temp1=newstack->pop();
+                     Node* temp2=newstack->pop();
           multi* newast=new multi(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
                      temp2=nullptr;
                     
-                    newstack.push(newast);
+                    newstack->push(newast);
                     newast=nullptr;
                  }
                  else if(n=="/"){
-                    Node* temp1=newstack.pop();
-                     Node* temp2=newstack.pop();
+                    Node* temp1=newstack->pop();
+                     Node* temp2=newstack->pop();
                 divi* newast=new divi(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
                      temp2=nullptr;
                    
-                    newstack.push(newast);
+                    newstack->push(newast);
                     newast=nullptr;
                  }
                  else if(n=="%"){
-                    Node* temp1=newstack.pop();
-                     Node* temp2=newstack.pop();
+                    Node* temp1=newstack->pop();
+                     Node* temp2=newstack->pop();
                     remai* newast=new remai(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
                      temp2=nullptr;
                   
-                    newstack.push(newast);
+                    newstack->push(newast);
                     newast=nullptr;
                  }
                  else{
                      //std:: cout<<"innegate"<<std::endl;
-                    Node* temp1=newstack.pop();
+                    Node* temp1=newstack->pop();
                      //std:: cout<<"popcorrect"<<std::endl;
                      negate* newast=new negate(temp1->element);
                      //std:: cout<<"newcorrect"<<std::endl;
@@ -134,7 +134,7 @@ AST* AST::parse(const std::string& expression) {
             
 
                    
-                    newstack.push(newast);
+                    newstack->push(newast);
                     newast=nullptr;
                  }
 
@@ -146,14 +146,23 @@ AST* AST::parse(const std::string& expression) {
         }
         
     }
-    if(newstack.gettop()==nullptr){
+    if(newstack->gettop()==nullptr){
          throw std::runtime_error("No input.");
     }
-    else if(newstack.gettop()->next!=nullptr){
+    else if(newstack->gettop()->next!=nullptr){
         throw std::runtime_error("Too many operands.");
     }
     else{
-    return newstack.gettop()->element;
+       // std:: cout<<"inlast"<<std::endl;
+        if(newstack->gettop()->element!=nullptr){
+           // std:: cout<<"notnullelement"<<std::endl;
+        }
+         //std:: cout<<newstack->gettop()->element->value()<<std::endl;
+         AST* temp=newstack->gettop()->element;
+         newstack->gettop()->element=nullptr;
+         delete newstack;
+         newstack=nullptr;
+    return temp;
     }
         
 
