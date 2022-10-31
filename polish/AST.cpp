@@ -53,9 +53,12 @@ AST* AST::parse(const std::string& expression) {
             }
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
             if(n=="~"&&newstack.gettop()==nullptr){
+                //std:: cout<<"innegawrong"<<std::endl;
                 throw std::runtime_error("Not enough operands.");
             }
-            else if(newstack.havetwo()==0){
+            else if(n!="~"&&newstack.havetwo()==0){
+                //std:: cout<<n<<std::endl;
+                //std:: cout<<"innumberwrong"<<std::endl;
                 throw std::runtime_error("Not enough operands.");
             }
             else{
@@ -74,7 +77,7 @@ AST* AST::parse(const std::string& expression) {
                 else if(n=="-"){
                     Node* temp1=newstack.pop();
                      Node* temp2=newstack.pop();
-                      minus* newast=new minus(newstack.pop()->element,newstack.pop()->element);
+                      minus* newast=new minus(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
@@ -86,7 +89,7 @@ AST* AST::parse(const std::string& expression) {
                  else if(n=="*"){
                     Node* temp1=newstack.pop();
                      Node* temp2=newstack.pop();
-          multi* newast=new multi(newstack.pop()->element,newstack.pop()->element);
+          multi* newast=new multi(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
@@ -98,7 +101,7 @@ AST* AST::parse(const std::string& expression) {
                  else if(n=="/"){
                     Node* temp1=newstack.pop();
                      Node* temp2=newstack.pop();
-                divi* newast=new divi(newstack.pop()->element,newstack.pop()->element);
+                divi* newast=new divi(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
@@ -110,7 +113,7 @@ AST* AST::parse(const std::string& expression) {
                  else if(n=="%"){
                     Node* temp1=newstack.pop();
                      Node* temp2=newstack.pop();
-                    remai* newast=new remai(newstack.pop()->element,newstack.pop()->element);
+                    remai* newast=new remai(temp1->element,temp2->element);
                      delete temp1;
                      delete temp2;
                      temp1=nullptr;
@@ -120,9 +123,11 @@ AST* AST::parse(const std::string& expression) {
                     newast=nullptr;
                  }
                  else{
+                     //std:: cout<<"innegate"<<std::endl;
                     Node* temp1=newstack.pop();
-                     
-                     negate* newast=new negate(newstack.pop()->element);
+                     //std:: cout<<"popcorrect"<<std::endl;
+                     negate* newast=new negate(temp1->element);
+                     //std:: cout<<"newcorrect"<<std::endl;
                      delete temp1;
                     
                      temp1=nullptr;

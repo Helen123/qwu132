@@ -3,6 +3,7 @@
 #include <stdexcept>
 #include <sstream>
 #include <cmath>
+#include <iostream>
 using std::istringstream;
 using std::string;
 
@@ -267,8 +268,10 @@ negate::negate(AST*& l){
         throw std::runtime_error("Not enough operands.");
     }
     else{
+       // std:: cout<<"newnegatecorrect"<<std::endl;
         left=l;
         l=nullptr;
+        //std:: cout<<"newnegatecorrect"<<std::endl;
     }
 }   
 negate::~negate(){
