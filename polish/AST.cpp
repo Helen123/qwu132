@@ -70,24 +70,59 @@ AST* AST::parse(const std::string& expression) {
                      newstack.push(newplus);
                 }
                 else if(n=="-"){
-                    minus* newast=new minus(newstack.pop()->element,newstack.pop()->element);
+                    Node* temp1=newstack.pop();
+                     Node* temp2=newstack.pop();
+                      minus* newast=new minus(newstack.pop()->element,newstack.pop()->element);
+                     delete temp1;
+                     delete temp2;
+                     temp1=nullptr;
+                     temp2=nullptr;
+                
                     newstack.push(newast);
                  }
                  else if(n=="*"){
-                    multi* newast=new multi(newstack.pop()->element,newstack.pop()->element);
+                    Node* temp1=newstack.pop();
+                     Node* temp2=newstack.pop();
+          multi* newast=new multi(newstack.pop()->element,newstack.pop()->element);
+                     delete temp1;
+                     delete temp2;
+                     temp1=nullptr;
+                     temp2=nullptr;
+                    
                     newstack.push(newast);
                  }
                  else if(n=="/"){
-                    divi* newast=new divi(newstack.pop()->element,newstack.pop()->element);
+                    Node* temp1=newstack.pop();
+                     Node* temp2=newstack.pop();
+                divi* newast=new divi(newstack.pop()->element,newstack.pop()->element);
+                     delete temp1;
+                     delete temp2;
+                     temp1=nullptr;
+                     temp2=nullptr;
+                   
                     newstack.push(newast);
                  }
                  else if(n=="%"){
+                    Node* temp1=newstack.pop();
+                     Node* temp2=newstack.pop();
                     remai* newast=new remai(newstack.pop()->element,newstack.pop()->element);
+                     delete temp1;
+                     delete temp2;
+                     temp1=nullptr;
+                     temp2=nullptr;
+                  
                     newstack.push(newast);
                  }
                  else{
+                    Node* temp1=newstack.pop();
+                     
+                     negate* newast=new negate(newstack.pop()->element);
+                     delete temp1;
+                    
+                     temp1=nullptr;
+            
 
-                    negate* newast=new negate(newstack.pop()->element);
+                   
                     newstack.push(newast);
                  }
 
