@@ -54,11 +54,15 @@ AST* AST::parse(const std::string& expression) {
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
             if(n=="~"&&newstack->gettop()==nullptr){
                 //std:: cout<<"innegawrong"<<std::endl;
+                delete newstack;
+                newstack=nullptr;
                 throw std::runtime_error("Not enough operands.");
             }
             else if(n!="~"&&newstack->havetwo()==0){
                 //std:: cout<<n<<std::endl;
                 //std:: cout<<"innumberwrong"<<std::endl;
+                delete newstack;
+                newstack=nullptr;
                 throw std::runtime_error("Not enough operands.");
             }
             else{
@@ -141,15 +145,21 @@ AST* AST::parse(const std::string& expression) {
             }
         }
         else{
+            delete newstack;
+                newstack=nullptr;
             std::string const outerror = "Invalid token: "+n;
             throw std::runtime_error(outerror);
         }
         
     }
     if(newstack->gettop()==nullptr){
+        delete newstack;
+                newstack=nullptr;
          throw std::runtime_error("No input.");
     }
     else if(newstack->gettop()->next!=nullptr){
+        delete newstack;
+                newstack=nullptr;
         throw std::runtime_error("Too many operands.");
     }
     else{
