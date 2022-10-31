@@ -6,8 +6,10 @@ Node::Node(){
   next=nullptr;
 }
 Node::~Node(){
-  delete element;
+delete element;
+element=nullptr;
 delete next;
+next=nullptr;
 }
 stack::stack(){
     top=nullptr;
