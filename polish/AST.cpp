@@ -60,8 +60,14 @@ AST* AST::parse(const std::string& expression) {
             else{
                 if(n=="+"){
                      //std:: cout<<"inadd"<<std::endl;
-                    plus* newplus=new plus(newstack.pop()->element,newstack.pop()->element);
-                    newstack.push(newplus);
+                     Node* temp1=newstack.pop();
+                     Node* temp2=newstack.pop();
+                     plus* newplus=new plus(temp1->element,temp2->element);
+                     delete temp1;
+                     delete temp2;
+                     temp1=nullptr;
+                     temp2=nullptr;
+                     newstack.push(newplus);
                 }
                 else if(n=="-"){
                     minus* newast=new minus(newstack.pop()->element,newstack.pop()->element);
