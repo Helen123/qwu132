@@ -49,6 +49,7 @@ AST* AST::parse(const std::string& expression) {
             std::stringstream(n) >> d1;
             num* newnumber=new num(d1);
             newstack.push(newnumber);
+            newnumber=nullptr;
             }
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
             if(n=="~"&&newstack.gettop()==nullptr){
@@ -68,6 +69,7 @@ AST* AST::parse(const std::string& expression) {
                      temp1=nullptr;
                      temp2=nullptr;
                      newstack.push(newplus);
+                     newplus =nullptr;
                 }
                 else if(n=="-"){
                     Node* temp1=newstack.pop();
@@ -79,6 +81,7 @@ AST* AST::parse(const std::string& expression) {
                      temp2=nullptr;
                 
                     newstack.push(newast);
+                    newast=nullptr;
                  }
                  else if(n=="*"){
                     Node* temp1=newstack.pop();
@@ -90,6 +93,7 @@ AST* AST::parse(const std::string& expression) {
                      temp2=nullptr;
                     
                     newstack.push(newast);
+                    newast=nullptr;
                  }
                  else if(n=="/"){
                     Node* temp1=newstack.pop();
@@ -101,6 +105,7 @@ AST* AST::parse(const std::string& expression) {
                      temp2=nullptr;
                    
                     newstack.push(newast);
+                    newast=nullptr;
                  }
                  else if(n=="%"){
                     Node* temp1=newstack.pop();
@@ -112,6 +117,7 @@ AST* AST::parse(const std::string& expression) {
                      temp2=nullptr;
                   
                     newstack.push(newast);
+                    newast=nullptr;
                  }
                  else{
                     Node* temp1=newstack.pop();
@@ -124,6 +130,7 @@ AST* AST::parse(const std::string& expression) {
 
                    
                     newstack.push(newast);
+                    newast=nullptr;
                  }
 
             }
