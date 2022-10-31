@@ -53,7 +53,9 @@ plus::plus(AST*& r, AST*& l){
 }    
 plus::~plus(){
     delete left;
+    left=nullptr;
     delete right;
+    right=nullptr;
 }
 std::string plus::prefix()  const{
     std::string out="+";
@@ -94,7 +96,9 @@ minus::minus(AST*& r, AST*& l){
 }    
 minus::~minus(){
     delete left;
+    left=nullptr;
     delete right;
+    right=nullptr;
 }
 std::string minus::prefix()  const{
     std::string out="-";
@@ -135,7 +139,9 @@ multi::multi(AST*& r, AST*& l){
 }    
 multi::~multi(){
     delete left;
+    left=nullptr;
     delete right;
+    right=nullptr;
 }
 std::string multi::prefix()  const{
     std::string out="*";
@@ -176,7 +182,9 @@ divi::divi(AST*& r, AST*& l){
 }    
 divi::~divi(){
     delete left;
+    left=nullptr;
     delete right;
+    right=nullptr;
 }
 std::string divi::prefix()  const{
     std::string out="/";
@@ -220,7 +228,9 @@ remai::remai(AST*& r, AST*& l){
 }    
 remai::~remai(){
     delete left;
+    left=nullptr;
     delete right;
+    right=nullptr;
 }
 std::string remai::prefix()  const{
     std::string out="%";
@@ -263,6 +273,7 @@ negate::negate(AST*& l){
 }   
 negate::~negate(){
     delete left;
+    left=nullptr;
 }
 std::string negate::prefix()  const{
     std::string out="~";

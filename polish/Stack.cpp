@@ -16,6 +16,7 @@ stack::stack(){
 }
   stack::~stack(){
      delete top;  
+     top=nullptr;
   }
 
   Node* stack::gettop(){
