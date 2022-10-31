@@ -257,7 +257,7 @@ double remai::value() const{
     if(right->value()==0){
         throw std::runtime_error("Division by zero.");
     }
-    double out=left->value()-int(left->value() /right->value());
+    double out=left->value()-int(left->value() /right->value())*right->value();
     return out;
 }
 
