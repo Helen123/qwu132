@@ -51,7 +51,7 @@ AST* AST::parse(const std::string& expression) {
             newstack.push(newnumber);
             }
         else if(n=="+"||n=="-"||n=="*"||n=="/"||n=="%"||n=="~"){
-            if(n=="~"&&newstack.haveone()==0){
+            if(n=="~"&&newstack.gettop()==nullptr){
                 throw std::runtime_error("Not enough operands.");
             }
             else if(newstack.havetwo()==0){
