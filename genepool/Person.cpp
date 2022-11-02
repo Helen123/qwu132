@@ -52,7 +52,11 @@
     return children1;
   }
   std::set<Person*> Person::grandchildren(){
-    return children1;
+    std::set<Person*> dau;
+    for(auto itr=children1.begin();itr!=children1.end();++itr){
+      dau.merge((*itr)->children1);
+    }
+    return dau;
   }
   std::set<Person*> Person::granddaughters(){
     return children1;
@@ -77,8 +81,12 @@
   }
   std::set<Person*> Person::parents(PMod pmod){
     std::set<Person*> dau;
-    dau.insert(dau.end(),(father1));
-    dau.insert(dau.end(),(mother1));
+    if(father1!=nullptr){
+      dau.insert(dau.end(),(father1));
+    }
+    if(mother1!=nullptr){
+      dau.insert(dau.end(),(mother1));
+    }
     return dau;
 
   }
