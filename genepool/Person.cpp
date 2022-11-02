@@ -40,7 +40,13 @@
     return children1;
   }
   std::set<Person*> Person::daughters(){
-    return children1;
+    std::set<Person*> dau;
+    for(auto itr=children1.begin();itr!=children1.end();++itr){
+      if((*itr)->gender1==Gender::FEMALE){
+        dau.insert(dau.end(),itr);
+      }
+    }
+    return dau;
   }
   std::set<Person*> Person::descendants(){
     return children1;
