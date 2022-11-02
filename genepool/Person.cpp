@@ -74,7 +74,15 @@
     return children1;
   }
   std::set<Person*> Person::grandparents(PMod pmod){
-    return children1;
+    std::set<Person*> dau;
+    if(father1!=nullptr){
+      dau.merge((father1->parents());
+    }
+    if(mother1!=nullptr){
+      dau.merge((mother1->parents());
+    }
+    return dau;
+
   }
   std::set<Person*> Person::grandsons(){
     return children1;
