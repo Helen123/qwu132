@@ -76,7 +76,11 @@
     return children1;
   }
   std::set<Person*> Person::parents(PMod pmod){
-    return children1;
+    std::set<Person*> dau;
+    dau.insert(dau.end(),(father1));
+    dau.insert(dau.end(),(mother1));
+    return dau;
+
   }
   std::set<Person*> Person::siblings(PMod pmod, SMod smod ){
     return children1;
@@ -85,7 +89,13 @@
     return children1;
   }
   std::set<Person*> Person::sons(){
-    return children1;
+    std::set<Person*> dau;
+    for(auto itr=children1.begin();itr!=children1.end();++itr){
+      if((*itr)->gender1==Gender::MALE){
+        dau.insert(dau.end(),(*itr));
+      }
+    }
+    return dau;
   }
   std::set<Person*> Person::uncles(PMod pmod, SMod smod ){
     return children1;
