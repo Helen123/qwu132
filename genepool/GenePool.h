@@ -12,6 +12,9 @@
 // It reads people from a TSV-like file in the constructor.
 
 class GenePool {
+  std::map<const std::string, Person*> pool;
+  size_t count;
+
   // Member Variables
 
   // Helper Functions

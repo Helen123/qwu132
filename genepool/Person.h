@@ -11,12 +11,27 @@
 // Add any member variables you need to support this.
 // Implement the member functions in Person.cpp.
 
+
 class Person {
   // Member Variables
+  private:
+
+    std::string name1;
+    Gender gender1;
+    Person*            mother1;
+    Person*            father1;
+    std::set<Person*> children1;
+
+
 
   // Helper Functions
+  std::set<Person*> children();
 
+
+ 
 public:
+  Person(const std::string n, Gender g);
+  ~Person();
   // Constructor
   // Destructor?
 
