@@ -1,9 +1,10 @@
 #include "GenePool.h"
 #include <fstream>
+using namespace std;
 
 // GenePool Member Functions
   GenePool::GenePool(std::istream& stream){
-    pool;
+    //pool;
     count=0;
 
   }
@@ -15,7 +16,7 @@
 
 
   Person* GenePool::find(const std::string& name) const{
-    Person* p;
+    Person* p=new Person("a",Gender::MALE);
     return p;
 
   }

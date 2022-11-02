@@ -14,7 +14,7 @@
 
 class Person {
   // Member Variables
-  private:
+  public:
 
     std::string name1;
     Gender gender1;
@@ -25,7 +25,6 @@ class Person {
 
 
   // Helper Functions
-  std::set<Person*> children();
 
 
  
