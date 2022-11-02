@@ -33,7 +33,7 @@ using namespace std;
             if(token!="???"){
               Person* m=find(token);
               p->mother1=m;
-              m->children1.insert(m->children1.end(),m);
+              m->children1.insert(m->children1.end(),p);
               
             }
           }
@@ -41,7 +41,7 @@ using namespace std;
             if(token!="???"){
               Person* f=find(token);
               p->father1=f;
-              f->children1.insert(f->children1.end(),f);
+              f->children1.insert(f->children1.end(),p);
             }
           }
         }
