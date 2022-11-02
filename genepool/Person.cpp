@@ -59,7 +59,13 @@
     return dau;
   }
   std::set<Person*> Person::granddaughters(){
-    return children1;
+    std::set<Person*> dau;
+    for(auto itr=grandchildren().begin();itr!=grandchildren().end();++itr){
+      if((*itr)->gender1==Gender::FEMALE){
+        dau.insert(dau.end(),(*itr));
+      }
+  }
+  return dau;
   }
   std::set<Person*> Person::grandfathers(PMod pmod){
     return children1;
@@ -80,6 +86,22 @@
     return children1;
   }
   std::set<Person*> Person::parents(PMod pmod){
+    if(pmod==PMod::MATERNAL){
+      std::set<Person*> dau;
+      if(mother1!=nullptr){
+      dau.insert(dau.end(),(mother1));
+    }
+    return dau;
+    }
+    if(pmod==PMod::PATERNAL){
+      std::set<Person*> dau;
+      if(father1!=nullptr){
+      dau.insert(dau.end(),(father1));
+    }
+    return dau;
+    }
+  
+
     std::set<Person*> dau;
     if(father1!=nullptr){
       dau.insert(dau.end(),(father1));
