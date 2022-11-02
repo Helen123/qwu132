@@ -43,7 +43,7 @@
     std::set<Person*> dau;
     for(auto itr=children1.begin();itr!=children1.end();++itr){
       if((*itr)->gender1==Gender::FEMALE){
-        dau.insert(dau.end(),itr);
+        dau.insert(dau.end(),(*itr));
       }
     }
     return dau;
