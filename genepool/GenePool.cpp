@@ -54,6 +54,9 @@ using namespace std;
 
 
   GenePool::~GenePool(){
+    for(auto itr=pool.begin();itr!=pool.end();++itr){
+      delete itr->second;
+    }
     pool.erase(pool.begin(),pool.end());
   }
 

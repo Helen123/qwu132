@@ -9,12 +9,7 @@
     mother1=nullptr;
   }
   Person::~Person(){
-    children1.clear();
-     //ffor(std::set<Person*>::iterator itr=set.begin();itr!=set.end();++itr){
-
-     
-    
-}
+    return;}
   const std::string& Person::name()   const{
     return name1;
   }
