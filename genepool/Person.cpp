@@ -1,4 +1,5 @@
 #include "Person.h"
+#include <algorithm>
 
 
 // Person Member Functions
@@ -59,14 +60,14 @@
     return dau;
   }
   std::set<Person*> Person::granddaughters(){
-  //   std::set<Person*> dau;
-  //   for(auto itr=grandchildren().begin();itr!=grandchildren().end();++itr){
-  //     if((*itr)->gender1==Gender::FEMALE){
-  //       dau.insert(dau.end(),(*itr));
-  //     }
-  // }
-  // return dau;
-  return children1;
+    std::set<Person*> dau;
+    for(auto itr=grandchildren().begin();itr!=grandchildren().end();++itr){
+      if((*itr)->gender1==Gender::FEMALE){
+        dau.insert(dau.end(),(*itr));
+      }
+  }
+  return dau;
+  
   }
   std::set<Person*> Person::grandfathers(PMod pmod){
     return children1;
@@ -75,10 +76,10 @@
     return children1;
   }
   std::set<Person*> Person::grandparents(PMod pmod){
-    if(pmod==PMod::MATERNAL){
+    if(pmod==PMod::MATERNAL&&mother1!=nullptr){
       return mother1->parents();
     }
-    if(pmod==PMod::PATERNAL){
+    if(pmod==PMod::PATERNAL&&father1!=nullptr){
       return father1->parents();
     }
     std::set<Person*> dau;
@@ -130,7 +131,38 @@
   }
   std::set<Person*> Person::siblings(PMod pmod, SMod smod ){
     return children1;
-  }
+    // std::set<Person*> dau;
+    // if(pmod==PMod::MATERNAL&&smod==SMod::HALF){
+    //   if(mother1!=nullptr){
+    //     for(auto itr=mother1->children1.begin();itr!=mother1->children1.end();++itr){
+    //       if((*itr)->name1!=name1){
+    //         dau.insert(dau.end(),(*itr));
+    //       }
+    //     }
+    //   }
+    //   return dau;
+    // }
+    // else if(pmod==PMod::PATERNAL&&smod==SMod::HALF){
+    //   if(father1!=nullptr){
+    //     for(auto itr=father1->children1.begin();itr!=father1->children1.end();++itr){
+    //       if((*itr)->name1!=name1){
+    //         dau.insert(dau.end(),(*itr));
+    //       }
+    //     }
+    //   }
+    //   return dau;
+    // }
+    // else{
+    //   std::set<Person*> dau1;
+    //   dau.merge((siblings(PMod::MATERNAL,SMod::HALF)));
+
+    //   std::set_intersection (dau.begin(), dau.end(), siblings(PMod::PATERNAL,SMod::HALF).begin(),siblings(PMod::PATERNAL,SMod::HALF).end(), dau1.begin());
+    //   return dau1;
+
+    // }
+          
+    }
+      
   std::set<Person*> Person::sisters(PMod pmod, SMod smod ){
     return children1;
   }
