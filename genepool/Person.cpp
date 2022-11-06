@@ -85,7 +85,7 @@
         dau.insert(dau.end(),(*itr));
       }
     }
-    return dau;
+    return sib;
   }
   std::set<Person*> Person::grandmothers(PMod pmod){
       std::set<Person*> dau;
@@ -95,7 +95,7 @@
         dau.insert(dau.end(),(*itr));
       }
     }
-    return dau;
+    return sib;
   }
   std::set<Person*> Person::grandparents(PMod pmod){
     if(pmod==PMod::MATERNAL&&mother1!=nullptr){
