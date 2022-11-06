@@ -155,6 +155,7 @@
           for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
             if((*itr)->name1==(*itr1)->name1){
               dua.erase(itr);
+              break;
 
             }
           }
@@ -171,6 +172,7 @@
           for(auto itr1=mochildren.begin();itr1!=mochildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
               dau.insert(dau.end(),(*itr));
+              break;
             }
           }
         }
@@ -186,7 +188,7 @@
           for(auto itr=chi.begin();itr!=chi.end();++itr){
             if((*itr)->name1==name1){
               chi.erase(itr);
-              --itr;
+              break;
             }
           }
             
@@ -205,6 +207,7 @@
           for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
             if((*itr)->name1==(*itr1)->name1){
               dua.erase(itr);
+              break;
 
             }
           }
@@ -223,6 +226,7 @@
           for(auto itr1=mochildren.begin();itr1!=mochildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
               dau.insert(dau.end(),(*itr));
+              break;
             }
           }
         }
@@ -239,7 +243,7 @@
           for(auto itr=chi.begin();itr!=chi.end();++itr){
             if((*itr)->name1==name1){
               chi.erase(itr);
-              --itr;
+              break;
             }
           }
             
