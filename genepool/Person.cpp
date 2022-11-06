@@ -154,33 +154,42 @@
         for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
           for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
             if((*itr)->name1==(*itr1)->name1){
+              dua.erase(itr);
 
             }
           }
 
         }
+        return dua;
 
       }
       else if(smod==SMod::FULL){
-        auto dau=siblings(PMod::PATERNAL);
+        std::set<Person*> dau;
         auto mochildren=siblings(PMod::MATERNAL);
         auto fachildren=siblings(PMod::PATERNAL);
         for(auto itr=fachildren.begin();itr!=fachildren.end();++itr){
           for(auto itr1=mochildren.begin();itr1!=mochildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
-              dau.erase(itr);
+              dau.insert(dau.end(),(*itr));
             }
           }
         }
         return dau;
       }
       else{
-        std::set<Person*> dau;
         if(mother1==nullptr){
+          std::set<Person*> dau;
           return dau;
         }
         else{
-          return mother1->children1;
+          auto chi=mother1->children1;
+          for(auto itr=chi.begin();itr!=chi.end();++itr){
+            if((*itr)->name1==name1){
+              chi.erase(itr);
+            }
+          }
+            
+          return chi;
         }
       }
         
@@ -188,32 +197,65 @@
     }
     else if(pmod==PMod::PATERNAL){
       if(smod==SMod::HALF){
-        return children1;
+        auto dua=siblings(PMod::PATERNAL);
+        auto mochildren=siblings(PMod::PATERNAL);
+        auto mfullchildren=siblings(PMod::PATERNAL,SMod::FULL);
+        for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
+          for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
+            if((*itr)->name1==(*itr1)->name1){
+              dua.erase(itr);
 
-      }
+            }
+          }
+
+        }
+        return dua;
+
+        }
+
+      
       else if(smod==SMod::FULL){
-        return children1;
+        std::set<Person*> dau;
+        auto mochildren=siblings(PMod::MATERNAL);
+        auto fachildren=siblings(PMod::PATERNAL);
+        for(auto itr=fachildren.begin();itr!=fachildren.end();++itr){
+          for(auto itr1=mochildren.begin();itr1!=mochildren.end();++itr1){
+            if((*itr)->name1==(*itr1)->name1){
+              dau.insert(dau.end(),(*itr));
+            }
+          }
+        }
+        return dau;
 
       }
       else{
-        std::set<Person*> dau;
-        if(father1==nullptr){
+         if(father1==nullptr){
+          std::set<Person*> dau;
           return dau;
         }
         else{
-          return father1->children1;
+          auto chi=father1->children1;
+          for(auto itr=chi.begin();itr!=chi.end();++itr){
+            if((*itr)->name1==name1){
+              chi.erase(itr);
+            }
+          }
+            
+          return chi;
         }
       }
 
     }
     else{
       if(smod==SMod::HALF){
-        return children1;
+        auto mochildren=siblings(PMod::MATERNAL,SMod::HALF);
+        auto fachildren=siblings(PMod::PATERNAL,SMod::HALF);
+        mochildren.merge(fachildren);
+        return mochildren;
 
       }
       else if(smod==SMod::FULL){
-        return children1;
-
+        return siblings(PMod::PATERNAL,SMod::FULL);
       }
       else{
         auto mochildren=siblings(PMod::MATERNAL);
