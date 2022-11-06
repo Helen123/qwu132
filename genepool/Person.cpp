@@ -152,7 +152,7 @@
         auto mochildren=siblings(PMod::MATERNAL);
         auto mfullchildren=siblings(PMod::MATERNAL,SMod::FULL);
         for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
-          for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
+          for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
               dua.erase(itr);
               break;
@@ -204,7 +204,7 @@
         auto mochildren=siblings(PMod::PATERNAL);
         auto mfullchildren=siblings(PMod::PATERNAL,SMod::FULL);
         for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
-          for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
+          for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
               dua.erase(itr);
               break;
