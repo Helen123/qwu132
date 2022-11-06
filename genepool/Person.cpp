@@ -186,6 +186,7 @@
           for(auto itr=chi.begin();itr!=chi.end();++itr){
             if((*itr)->name1==name1){
               chi.erase(itr);
+              --itr;
             }
           }
             
@@ -238,6 +239,7 @@
           for(auto itr=chi.begin();itr!=chi.end();++itr){
             if((*itr)->name1==name1){
               chi.erase(itr);
+              --itr;
             }
           }
             
