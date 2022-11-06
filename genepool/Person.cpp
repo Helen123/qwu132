@@ -25,11 +25,21 @@
   }
 
   std::set<Person*> Person::ancestors(PMod pmod){
-    return children1;
-
+    // std::set<Person*> dau;
+    // auto chi=children1;
+    // while(chi.empty()==0){
+    //   dau.merge(chi)
+    // }
+return children1;
   }
   std::set<Person*> Person::aunts(PMod pmod, SMod smod ){
-    return children1;
+    std::set<Person*> dau;
+    auto parent=parents(pmod);
+    for(auto itr=parent.begin();itr!=parent.end();++itr){
+      dau.merge((*itr)->sisters(PMod::ANY,smod));
+
+    }
+    return dau;
   }
   std::set<Person*> Person::brothers(PMod pmod, SMod smod ){
     std::set<Person*> dau;
@@ -45,7 +55,13 @@
     return children1;
   }
   std::set<Person*> Person::cousins(PMod pmod, SMod smod ){
-    return children1;
+    std::set<Person*> dau;
+    auto parent=parents(pmod);
+    for(auto itr=parent.begin();itr!=parent.end();++itr){
+      dau.merge((*itr)->siblings(PMod::ANY,smod));
+
+    }
+    return dau;
   }
   std::set<Person*> Person::daughters(){
     std::set<Person*> dau;
