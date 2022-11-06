@@ -32,7 +32,7 @@
    else{
     std::set<Person*> dau;
     dau.merge(parents());
-    for(auto itr=parents.begin();itr!=parents.end();++itr){
+    for(auto itr=parents().begin();itr!=parents().end();++itr){
       auto desc=(*itr)->ancestors();
         dau.merge(desc);
     }
