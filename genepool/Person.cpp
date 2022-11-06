@@ -1,6 +1,6 @@
 #include "Person.h"
 #include <algorithm>
-
+#include <iostream>
 
 // Person Member Functions
   Person::Person(const std::string n, Gender g){
@@ -61,8 +61,10 @@
   }
   std::set<Person*> Person::granddaughters(){
     std::set<Person*> dau;
-    for(auto itr=grandchildren().begin();itr!=grandchildren().end();++itr){
-      if((*itr)->gender1==Gender::FEMALE){
+    auto gchildren = grandchildren();
+    for(auto itr=gchildren.begin();itr!=gchildren.end();++itr){
+      std::cout << (*itr)->name() << std::endl;
+      if((*itr)->gender()==Gender::FEMALE){
         dau.insert(dau.end(),(*itr));
       }
   }
@@ -106,16 +108,16 @@
     if(pmod==PMod::MATERNAL){
       std::set<Person*> dau;
       if(mother1!=nullptr){
-      dau.insert(dau.end(),(mother1));
-    }
-    return dau;
+        dau.insert(dau.end(),(mother1));
+      }
+      return dau;
     }
     if(pmod==PMod::PATERNAL){
       std::set<Person*> dau;
       if(father1!=nullptr){
-      dau.insert(dau.end(),(father1));
-    }
-    return dau;
+        dau.insert(dau.end(),(father1));
+      }
+      return dau;
     }
   
 
@@ -131,27 +133,42 @@
   }
   std::set<Person*> Person::siblings(PMod pmod, SMod smod ){
     return children1;
-    // std::set<Person*> dau;
-    // if(pmod==PMod::MATERNAL&&smod==SMod::HALF){
-    //   if(mother1!=nullptr){
-    //     for(auto itr=mother1->children1.begin();itr!=mother1->children1.end();++itr){
-    //       if((*itr)->name1!=name1){
-    //         dau.insert(dau.end(),(*itr));
-    //       }
-    //     }
-    //   }
-    //   return dau;
-    // }
-    // else if(pmod==PMod::PATERNAL&&smod==SMod::HALF){
-    //   if(father1!=nullptr){
-    //     for(auto itr=father1->children1.begin();itr!=father1->children1.end();++itr){
-    //       if((*itr)->name1!=name1){
-    //         dau.insert(dau.end(),(*itr));
-    //       }
-    //     }
-    //   }
-    //   return dau;
-    // }
+    std::set<Person*> dau;
+    if(pmod==PMod::MATERNAL&&smod==SMod::HALF){
+      if(mother1!=nullptr){
+        for(auto itr=mother1->children1.begin();itr!=mother1->children1.end();++itr){
+          if((*itr)->name1!=name1){
+            dau.insert(dau.end(),(*itr));
+          }
+        }
+      }
+      return dau;
+    }
+    else if(pmod==PMod::PATERNAL&&smod==SMod::HALF){
+      if(father1!=nullptr){
+        for(auto itr=father1->children1.begin();itr!=father1->children1.end();++itr){
+          if((*itr)->name1!=name1){
+            dau.insert(dau.end(),(*itr));
+          }
+        }
+      }
+      return dau;
+    }
+    else{
+      return children1;
+    }
+
+  //   else{
+  //      auto msibling = siblings(PMod::MATERNAL,SMod::HALF);
+  //      for(auto itr=msibling.begin();itr!=msibling.end();++itr){
+  //         if((){
+  //           dau.insert(dau.end(),(*itr));
+  //         }
+
+
+  
+  // }
+    
     // else{
     //   std::set<Person*> dau1;
     //   dau.merge((siblings(PMod::MATERNAL,SMod::HALF)));
