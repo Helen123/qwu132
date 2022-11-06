@@ -146,51 +146,86 @@
 
   }
   std::set<Person*> Person::siblings(PMod pmod, SMod smod ){
+    if(pmod==PMod::MATERNAL){
+      if(smod==SMod::HALF){
+        auto dua=siblings(PMod::MATERNAL);
+        auto mochildren=siblings(PMod::MATERNAL);
+        auto mfullchildren=siblings(PMod::MATERNAL,SMod::FULL);
+        for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
+          for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr){
+            if((*itr)->name1==(*itr1)->name1){
+
+            }
+          }
+
+        }
+
+      }
+      else if(smod==SMod::FULL){
+        auto dau=siblings(PMod::PATERNAL);
+        auto mochildren=siblings(PMod::MATERNAL);
+        auto fachildren=siblings(PMod::PATERNAL);
+        for(auto itr=fachildren.begin();itr!=fachildren.end();++itr){
+          for(auto itr1=mochildren.begin();itr1!=mochildren.end();++itr1){
+            if((*itr)->name1==(*itr1)->name1){
+              dau.erase(itr);
+            }
+          }
+        }
+        return dau;
+      }
+      else{
+        std::set<Person*> dau;
+        if(mother1==nullptr){
+          return dau;
+        }
+        else{
+          return mother1->children1;
+        }
+      }
+        
+
+    }
+    else if(pmod==PMod::PATERNAL){
+      if(smod==SMod::HALF){
+        return children1;
+
+      }
+      else if(smod==SMod::FULL){
+        return children1;
+
+      }
+      else{
+        std::set<Person*> dau;
+        if(father1==nullptr){
+          return dau;
+        }
+        else{
+          return father1->children1;
+        }
+      }
+
+    }
+    else{
+      if(smod==SMod::HALF){
+        return children1;
+
+      }
+      else if(smod==SMod::FULL){
+        return children1;
+
+      }
+      else{
+        auto mochildren=siblings(PMod::MATERNAL);
+        auto fachildren=siblings(PMod::PATERNAL);
+        mochildren.merge(fachildren);
+        return mochildren;
+      }
+
+    }
     return children1;
-    std::set<Person*> dau;
-    if(pmod==PMod::MATERNAL&&smod==SMod::ANY){
-      if(mother1!=nullptr){
-        for(auto itr=mother1->children1.begin();itr!=mother1->children1.end();++itr){
-          if((*itr)->name1!=name1){
-            dau.insert(dau.end(),(*itr));
-          }
-        }
-      }
-      return dau;
-    }
-    else if(pmod==PMod::PATERNAL&&smod==SMod::ANY){
-      if(father1!=nullptr){
-        for(auto itr=father1->children1.begin();itr!=father1->children1.end();++itr){
-          if((*itr)->name1!=name1){
-            dau.insert(dau.end(),(*itr));
-          }
-        }
-      }
-      return dau;
-    }
-    // else{
-    //   return children1;
-    // }
-
-    // else{
-    //    auto msibling = siblings(PMod::MATERNAL,SMod::FULL);
-    //    for(auto itr=msibling.begin();itr!=msibling.end();++itr){
-    //       if((){
-    //         dau.insert(dau.end(),(*itr));
-    //       }
-
-
-  
   }
     
-    // else{
-    //   std::set<Person*> dau1;
-    //   dau.merge((siblings(PMod::MATERNAL,SMod::ANY)));
-
-    //   std::set_intersection (dau.begin(), dau.end(), siblings(PMod::PATERNAL,SMod::ANY).begin(),siblings(PMod::PATERNAL,SMod::HALF).end(), dau1.begin());
-    //   return dau1;
-
-    // }
           
     
       
