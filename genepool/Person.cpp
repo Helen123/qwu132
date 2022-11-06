@@ -148,20 +148,22 @@
   std::set<Person*> Person::siblings(PMod pmod, SMod smod ){
     if(pmod==PMod::MATERNAL){
       if(smod==SMod::HALF){
-        auto dua=siblings(PMod::MATERNAL);
+        std::set<Person*> dau;
         auto mochildren=siblings(PMod::MATERNAL);
         auto mfullchildren=siblings(PMod::MATERNAL,SMod::FULL);
         for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
+          bool have=0;
           for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
-              dua.erase(itr);
+              have=1;
               break;
-
             }
           }
-
+          if(have==0){
+            dau.insert(dau.end(),(*itr));
+          }
         }
-        return dua;
+        return dau;
 
       }
       else if(smod==SMod::FULL){
@@ -200,20 +202,22 @@
     }
     else if(pmod==PMod::PATERNAL){
       if(smod==SMod::HALF){
-        auto dua=siblings(PMod::PATERNAL);
+        std::set<Person*> dau;
         auto mochildren=siblings(PMod::PATERNAL);
         auto mfullchildren=siblings(PMod::PATERNAL,SMod::FULL);
         for(auto itr=mochildren.begin();itr!=mochildren.end();++itr){
+          bool have=0;
           for(auto itr1=mfullchildren.begin();itr1!=mfullchildren.end();++itr1){
             if((*itr)->name1==(*itr1)->name1){
-              dua.erase(itr);
+              have=1;
               break;
-
             }
           }
-
+          if(have==0){
+            dau.insert(dau.end(),(*itr));
+          }
         }
-        return dua;
+        return dau;
 
         }
 
