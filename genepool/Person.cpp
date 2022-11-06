@@ -78,10 +78,24 @@
   
   }
   std::set<Person*> Person::grandfathers(PMod pmod){
-    return children1;
+    std::set<Person*> dau;
+     auto sib=grandparents(pmod);
+     for(auto itr=sib.begin();itr!=sib.end();++itr){
+      if((*itr)->gender1==Gender::MALE){
+        dau.insert(dau.end(),(*itr));
+      }
+    }
+    return dau;
   }
   std::set<Person*> Person::grandmothers(PMod pmod){
-    return children1;
+      std::set<Person*> dau;
+     auto sib=grandparents(pmod);
+     for(auto itr=sib.begin();itr!=sib.end();++itr){
+      if((*itr)->gender1==Gender::FEMALE){
+        dau.insert(dau.end(),(*itr));
+      }
+    }
+    return dau;
   }
   std::set<Person*> Person::grandparents(PMod pmod){
     if(pmod==PMod::MATERNAL&&mother1!=nullptr){
