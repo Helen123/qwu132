@@ -77,7 +77,7 @@
     return dau;
   }
   std::set<Person*> Person::descendants(){
-   if(children1.empty()==1){
+   if(children1.empty()==true){
     std::set<Person*> empty;
     return empty;
    }
