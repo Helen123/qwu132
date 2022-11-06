@@ -31,7 +31,7 @@
    }
    else{
     std::set<Person*> dau;
-    dau.merge(parents());
+    dau.merge(parents(pmod));
     for(auto itr=parents().begin();itr!=parents().end();++itr){
       auto desc=(*itr)->ancestors();
         dau.merge(desc);
@@ -68,7 +68,7 @@
     for(auto itr=parent.begin();itr!=parent.end();++itr){
       auto sib=(*itr)->siblings(PMod::ANY,smod);
       for(auto itr1=sib.begin();itr1!=sib.end();++itr1){
-        dau.merge((*itr1)->children1);
+        dau.merge((*itr1)->children());
       }
 
     }
@@ -90,7 +90,7 @@
    }
    else{
     std::set<Person*> dau;
-    dau.merge(children1);
+    dau.merge(children());
     for(auto itr=children1.begin();itr!=children1.end();++itr){
       auto desc=(*itr)->descendants();
         dau.merge(desc);
