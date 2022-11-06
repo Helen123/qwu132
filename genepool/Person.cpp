@@ -85,7 +85,7 @@
         dau.insert(dau.end(),(*itr));
       }
     }
-    return sib;
+    return dau;
   }
   std::set<Person*> Person::grandmothers(PMod pmod){
       std::set<Person*> dau;
@@ -95,7 +95,7 @@
         dau.insert(dau.end(),(*itr));
       }
     }
-    return sib;
+    return dau;
   }
   std::set<Person*> Person::grandparents(PMod pmod){
     if(pmod==PMod::MATERNAL&&mother1!=nullptr){
@@ -137,7 +137,12 @@
     return children1;
   }
   std::set<Person*> Person::nieces(PMod pmod, SMod smod ){
-    return children1;
+    std::set<Person*> dau;
+    auto sib=siblings(pmod,smod);
+    for(auto itr=sib.begin();itr!=sib.end();++itr){
+      dau.merge((*itr)->daughters());
+    }
+    return dau;
   }
   std::set<Person*> Person::parents(PMod pmod){
     if(pmod==PMod::MATERNAL){
