@@ -134,7 +134,12 @@
 
   }
   std::set<Person*> Person::nephews(PMod pmod, SMod smod ){
-    return children1;
+    std::set<Person*> dau;
+    auto sib=siblings(pmod,smod);
+    for(auto itr=sib.begin();itr!=sib.end();++itr){
+      dau.merge((*itr)->sons());
+    }
+    return dau;
   }
   std::set<Person*> Person::nieces(PMod pmod, SMod smod ){
     std::set<Person*> dau;
@@ -327,7 +332,13 @@
     return dau;
   }
   std::set<Person*> Person::uncles(PMod pmod, SMod smod ){
-    return children1;
+    std::set<Person*> dau;
+    auto parent=parents(pmod);
+    for(auto itr=parent.begin();itr!=parent.end();++itr){
+      dau.merge((*itr)->brothers(PMod::ANY,smod));
+
+    }
+    return dau;
   }
 
     
