@@ -25,12 +25,19 @@
   }
 
   std::set<Person*> Person::ancestors(PMod pmod){
-    // std::set<Person*> dau;
-    // auto chi=children1;
-    // while(chi.empty()==0){
-    //   dau.merge(chi)
-    // }
-    return children1;
+   if(parents().empty()==true){
+    std::set<Person*> empty;
+    return empty;
+   }
+   else{
+    std::set<Person*> dau;
+    dau.merge(parents());
+    for(auto itr=parents.begin();itr!=parents.end();++itr){
+      auto desc=(*itr)->ancestors();
+        dau.merge(desc);
+    }
+    return dau;
+   }
   }
 
   std::set<Person*> Person::aunts(PMod pmod, SMod smod ){
