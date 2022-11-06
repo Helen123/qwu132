@@ -83,6 +83,7 @@
    }
    else{
     std::set<Person*> dau;
+    dau.merge(children1);
     for(auto itr=children1.begin();itr!=children1.end();++itr){
       auto desc=(*itr)->descendants();
         dau.merge(desc);
