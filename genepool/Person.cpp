@@ -30,8 +30,9 @@
     // while(chi.empty()==0){
     //   dau.merge(chi)
     // }
-return children1;
+    return children1;
   }
+
   std::set<Person*> Person::aunts(PMod pmod, SMod smod ){
     std::set<Person*> dau;
     auto parent=parents(pmod);
@@ -58,7 +59,10 @@ return children1;
     std::set<Person*> dau;
     auto parent=parents(pmod);
     for(auto itr=parent.begin();itr!=parent.end();++itr){
-      dau.merge((*itr)->siblings(PMod::ANY,smod));
+      auto sib=(*itr)->siblings(PMod::ANY,smod);
+      for(auto itr1=sib.begin();itr1!=sib.end();++itr1){
+        dau.merge((*itr1)->children1);
+      }
 
     }
     return dau;
@@ -73,7 +77,18 @@ return children1;
     return dau;
   }
   std::set<Person*> Person::descendants(){
-    return children1;
+   if(children1.empty()==1){
+    std::set<Person*> empty;
+    return empty;
+   }
+   else{
+    std::set<Person*> dau;
+    for(auto itr=children1.begin();itr!=children1.end();++itr){
+      auto desc=(*itr)->descendants();
+        dau.merge(desc);
+    }
+    return dau;
+   }
   }
   std::set<Person*> Person::grandchildren(){
     std::set<Person*> dau;
