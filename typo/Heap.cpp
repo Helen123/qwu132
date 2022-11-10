@@ -57,16 +57,18 @@ using namespace std;
         mData[0]=mData[mCount];
         mCount--;
         size_t i=0;
-        while((mData[i].score<mData[i * 2 + 1].score||mData[i].score<mData[i * 2 + 2].score)&&i * 2 + 2<mCount){
-            if(mData[i * 2 + 1].score>mData[i * 2 + 2].score){
-                std::swap(mData[i],mData[i * 2 + 2]);
-                i=i * 2 + 2;
-            }
-            else{
-                std::swap(mData[i],mData[i * 2 +1]);
+        size_t left=i * 2 + 1;
+        size_t right=i * 2 + 2;
+        right<mCount;
+        while(left<mCount){
+            if(right=mCount||(mData[left].score<=mData[right].score&&mData[left].score<mData[i].score)){
+                swap(mData[left], mData[i]);
                 i=i * 2 + 1;
             }
-
+            else if(mData[left].score>mData[right].score&&mData[right].score<mData[i].score){
+                swap(mData[right], mData[i]);
+                 i=i * 2 + 2;
+            }
         }
 
         return out;
@@ -78,17 +80,20 @@ using namespace std;
         Heap::Entry out=mData[0];
         mData[0]={value,score};
         size_t i=0;
-        while((mData[i].score<mData[i * 2 + 1].score||mData[i].score<mData[i * 2 + 2].score)&&i * 2 + 2<mCount){
-            if(mData[i * 2 + 1].score>mData[i * 2 + 2].score){
-                std::swap(mData[i],mData[i * 2 + 2]);
-                i=i * 2 + 2;
-            }
-            else{
-                std::swap(mData[i],mData[i * 2 +1]);
+        size_t left=i * 2 + 1;
+        size_t right=i * 2 + 2;
+        right<mCount;
+        while(left<mCount){
+            if(right=mCount||(mData[left].score<=mData[right].score&&mData[left].score<mData[i].score)){
+                swap(mData[left], mData[i]);
                 i=i * 2 + 1;
             }
-
+            else if(mData[left].score>mData[right].score&&mData[right].score<mData[i].score){
+                swap(mData[right], mData[i]);
+                 i=i * 2 + 2;
+            }
         }
+
 
         return out;
 
