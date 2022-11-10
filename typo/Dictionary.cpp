@@ -5,7 +5,7 @@
 using namespace std;
 
 Dictionary::Dictionary(std::istream& stream){
-mWords={""};
+
 }
 
 Heap Dictionary::correct(const std::vector<Point>& points, size_t maxcount, float cutoff) const{

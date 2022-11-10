@@ -15,7 +15,7 @@ using namespace std;
     Heap::Heap(const Heap& other){
         mData=new Heap::Entry[other.capacity()];
         mCapacity=other.capacity();
-        for(size_t i=0; i<other.mCount;i++){
+        for(size_t i=0; i<other.count();i++){
             mData[i]=other.mData[i];
             mCount++;
         }
@@ -105,5 +105,8 @@ using namespace std;
         } 
     }
     const Heap::Entry& Heap::top() const{
+        if (mCount==0){
+            throw std::underflow_error("underflow_error");
+        }
         return mData[0];
     }
