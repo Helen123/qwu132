@@ -48,15 +48,62 @@ using namespace std;
     return mData[index];
     }
         
-    Heap::Entry        Heap::pop(){
-        return mData[1];
+    Heap::Entry Heap::pop(){
+        if (mCount==0){
+            throw std::underflow_error("underflow_error");
+        }
+        Heap::Entry out=mData[0];
+        mData[0]=mData[mCount];
+        mCount--;
+        size_t i=0;
+        while((mData[i].score<mData[i * 2 + 1].score||mData[i].score<mData[i * 2 + 2].score)&&i<mCount){
+            if(mData[i * 2 + 1].score>mData[i * 2 + 2].score){
+                std::swap(mData[i],mData[i * 2 + 2]);
+                i=i * 2 + 2;
+            }
+            else{
+                std::swap(mData[i],mData[i * 2 +1]);
+                i=i * 2 + 1;
+            }
+
+        }
+
+        return out;
     }
     Heap::Entry        Heap::pushpop(const std::string& value, float score){
-         return mData[1];
+        if (mCount==0){
+            throw std::underflow_error("underflow_error");
+        }
+        Heap::Entry out=mData[0];
+        mData[0]={value,score};
+        size_t i=0;
+        while((mData[i].score<mData[i * 2 + 1].score||mData[i].score<mData[i * 2 + 2].score)&&i<mCount){
+            if(mData[i * 2 + 1].score>mData[i * 2 + 2].score){
+                std::swap(mData[i],mData[i * 2 + 2]);
+                i=i * 2 + 2;
+            }
+            else{
+                std::swap(mData[i],mData[i * 2 +1]);
+                i=i * 2 + 1;
+            }
+
+        }
+
+        return out;
+
     }
     void         Heap::push(const std::string& value, float score){
-        
+        if(mCount==mCapacity){
+             throw std::overflow_error("overflow_error");
+        }
+        mData[mCount]=Heap::Entry{value,score};
+        mCount++;
+        size_t i=mCount-1;
+        while(i!=0&&mData[(i - 1) / 2].score>mData[i].score){
+            swap(mData[(i - 1) / 2],mData[i]);
+            i=(i - 1) / 2;
+        } 
     }
     const Heap::Entry& Heap::top() const{
-         return mData[1];
+        return mData[0];
     }
