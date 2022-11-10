@@ -14,10 +14,12 @@ using namespace std;
     }
     Heap::Heap(const Heap& other){
         mData=new Heap::Entry[other.capacity()];
+        mCapacity=other.capacity();
         for(size_t i=0; i<other.mCount;i++){
             mData[i]=other.mData[i];
             mCount++;
         }
+        
     }
 
     Heap::Heap(Heap&& other){
@@ -40,7 +42,10 @@ using namespace std;
         return mCount;
     }
     const Heap::Entry& Heap::lookup(size_t index) const{
-        return mData[index];
+        if (index>=mCount){
+            throw std::out_of_range("out of range");
+        }
+    return mData[index];
     }
         
     Heap::Entry        Heap::pop(){
