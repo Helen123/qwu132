@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <sstream>
+#include <iostream>
 using namespace std;
 
 
@@ -15,9 +16,9 @@ using namespace std;
     Heap::Heap(const Heap& other){
         mData=new Heap::Entry[other.capacity()];
         mCapacity=other.capacity();
+        mCount=other.count();
         for(size_t i=0; i<other.count();i++){
             mData[i]=other.mData[i];
-            mCount++;
         }
         
     }
