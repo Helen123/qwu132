@@ -12,7 +12,7 @@ Dictionary::Dictionary(std::istream& stream){
             size_t c=0;
             bool t =0;
             while(c<line.length()){
-                if(islower(c) == 0){
+                if(islower(line[c]) == 0){
                 t=1; 
                 break;
                 }
@@ -42,12 +42,15 @@ Heap Dictionary::correct(const std::vector<Point>& points, size_t maxcount, floa
                 count++;
             }
             float thisscore=sum/float(count);
+            if(thisscore>cutoff){
             if(thisscore>cutoff&&h.count()<maxcount){
                 h.push(i,thisscore);
             }
             else if(thisscore>cutoff&&h.lookup(0).score<thisscore){
                 h.pushpop(i,thisscore);
+            }    
             }
+            
 
         }
     }
