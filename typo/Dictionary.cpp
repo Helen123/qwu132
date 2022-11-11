@@ -7,8 +7,11 @@ using namespace std;
 
 Dictionary::Dictionary(std::istream& stream){
     std::string line;
-    while (std::getline(stream, line )&&line[0]!='#'){
-        mWords.push_back(line);
+    while (std::getline(stream, line )){
+        if(line[0]!='#'){
+        mWords.push_back(line);    
+        }
+        
     }
 }
 
