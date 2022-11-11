@@ -54,7 +54,7 @@ using namespace std;
             throw std::underflow_error("underflow_error");
         }
         Heap::Entry out=mData[0];
-        mData[0]=mData[mCount];
+        mData[0]=mData[mCount-1];
         mCount--;
         size_t i=0;
         size_t left=i * 2 + 1;
