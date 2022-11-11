@@ -70,7 +70,7 @@ using namespace std;
                 swap(mData[right], mData[i]);
                  i=i * 2 + 2;
                  left=i * 2 + 1;
-                right=i * 2 + 2;
+                 right=i * 2 + 2;
             }
             else{
                 break;
@@ -89,13 +89,20 @@ using namespace std;
         size_t left=i * 2 + 1;
         size_t right=i * 2 + 2;
         while(left<mCount){
-            if(right==mCount||(mData[left].score<=mData[right].score&&mData[left].score<mData[i].score)){
+            if((right==mCount&&mData[left].score<mData[i].score)||(mData[left].score<=mData[right].score&&mData[left].score<mData[i].score)){
                 swap(mData[left], mData[i]);
                 i=i * 2 + 1;
+                left=i * 2 + 1;
+                right=i * 2 + 2;
             }
-            else if(mData[left].score>mData[right].score&&mData[right].score<mData[i].score){
+            else if(mData[right].score<mData[i].score){
                 swap(mData[right], mData[i]);
                  i=i * 2 + 2;
+                 left=i * 2 + 1;
+                 right=i * 2 + 2;
+            }
+            else{
+                break;
             }
         }
 
