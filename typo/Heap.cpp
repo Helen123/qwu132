@@ -63,10 +63,14 @@ using namespace std;
             if((right==mCount&&mData[left].score<mData[i].score)||(mData[left].score<=mData[right].score&&mData[left].score<mData[i].score)){
                 swap(mData[left], mData[i]);
                 i=i * 2 + 1;
+                left=i * 2 + 1;
+                right=i * 2 + 2;
             }
             else if(mData[right].score<mData[i].score){
                 swap(mData[right], mData[i]);
                  i=i * 2 + 2;
+                 left=i * 2 + 1;
+                right=i * 2 + 2;
             }
             else{
                 break;
