@@ -9,7 +9,18 @@ Dictionary::Dictionary(std::istream& stream){
     std::string line;
     while (std::getline(stream, line )){
         if(line[0]!='#'){
-        mWords.push_back(line);    
+            size_t c=0;
+            bool t =0;
+            while(c<line.length()){
+                if(islower(c) == 0){
+                t=1; 
+                break;
+                }
+                c++;
+            }
+        if(t==0){
+         mWords.push_back(line);   
+        } 
         }
         
     }
