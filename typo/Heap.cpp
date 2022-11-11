@@ -84,7 +84,7 @@ using namespace std;
             throw std::underflow_error("underflow_error");
         }
         Heap::Entry out=mData[0];
-        mData[0]={value,score};
+        mData[0]=Heap::Entry{value,score};
         size_t i=0;
         size_t left=i * 2 + 1;
         size_t right=i * 2 + 2;
