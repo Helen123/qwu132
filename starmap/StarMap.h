@@ -2,16 +2,12 @@
 #define STARMAP_H
 
 #include "Star.h"
+#include "Helpers.h"
 
 #include <istream>
 #include <vector>
+#include <set>
 
-struct Node {
-  Star*      data;
-  Node*       left;
-  Node*       right;
-  size_t      depth;
-}
 
 class StarMap {
 public:
@@ -19,7 +15,8 @@ public:
     static StarMap* create(std::istream& stream);
 
 private:
-    Node* root;
+    // Node* root;
+    std::set <Star> stars;
 
     
     // Member Variables
